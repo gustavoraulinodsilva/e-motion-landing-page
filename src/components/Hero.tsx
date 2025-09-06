@@ -56,7 +56,7 @@ export default function HeroHorizontalScroll() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-white overflow-hidden"
+      className="relative w-full h-screen bg-neutral-50 overflow-hidden"
     >
       <div
         ref={imagesWrapperRef}
@@ -70,52 +70,71 @@ export default function HeroHorizontalScroll() {
               alt={`segmento-${idx}`}
               width={1920}
               height={1080}
-              className="w-screen h-screen object-cover flex-shrink-0"
+              className={`w-screen h-screen object-cover flex-shrink-0 transition-all duration-700 ${
+                idx === images.length - 1 
+                  ? "grayscale-0" 
+                  : "grayscale hover:grayscale-0"
+              }`}
               style={{ scrollSnapAlign: "center" }}
             />
-            {/* Overlay gradiente preto */}
-            <div
-              className="absolute inset-0 z-10 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.0) 100%)",
-                opacity: 0.7,
-              }}
-            />
-            {/* Texto sobreposto */}
-            <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-20 px-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4 text-center">
-                {idx === 0
-                  ? "A evolução dos carros"
-                  : idx === images.length - 1
-                  ? "O futuro é elétrico"
-                  : ""}
-              </h2>
+            <div 
+              className={`absolute inset-0 z-10 ${
+                idx === images.length - 1 
+                  ? "bg-gradient-to-b from-black/70 via-black/20 to-black/40" 
+                  : "bg-black/30"
+              }`}
+            ></div>
+            <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-20 px-8">
               {idx === 0 && (
-                <>
-                  <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow mb-6">
-                    Do motor a combustão aos elétricos: conheça a história e o futuro
-                    da mobilidade!
+                <div className="text-center space-y-4 max-w-2xl">
+                  <h1 className="text-5xl md:text-6xl font-light text-white tracking-wide">
+                    Evolução
+                  </h1>
+                  <p className="text-lg text-white/80 font-light leading-relaxed">
+                    A jornada da mobilidade através dos tempos
                   </p>
-                </>
+                  <div className="pt-8">
+                    <button
+                      onClick={() => {
+                        const el = document.getElementById("historia-carros");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="inline-flex items-center text-white border border-white/30 hover:bg-white hover:text-black px-6 py-3 transition-all duration-300 font-light tracking-wide"
+                    >
+                      Explorar
+                      <span className="ml-2">→</span>
+                    </button>
+                  </div>
+                </div>
               )}
               {idx === images.length - 1 && (
-                <>
-                  <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow mb-6">
-                    Descubra como os carros elétricos estão mudando o mundo!
+                <div className="text-center space-y-4 max-w-2xl">
+                  <h1 className="text-5xl md:text-6xl font-light text-white tracking-wide">
+                    Futuro
+                  </h1>
+                  <p className="text-lg text-white/80 font-light leading-relaxed">
+                    A era da mobilidade elétrica e sustentável
                   </p>
-                  <button
-                    onClick={() => {
-                      const el = document.getElementById("carros-eletricos");
-                      if (el) el.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg hover:scale-105"
-                  >
-                    Saiba Mais
-                  </button>
-                </>
+                  <div className="pt-8">
+                    <button
+                      onClick={() => {
+                        const el = document.getElementById("carros-eletricos");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="inline-flex items-center text-white border border-white/30 hover:bg-white hover:text-black px-6 py-3 transition-all duration-300 font-light tracking-wide"
+                    >
+                      Descobrir
+                      <span className="ml-2">→</span>
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
+            {(idx === 0 || idx === images.length - 1) && (
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
+                <div className="w-12 h-px bg-white/50"></div>
+              </div>
+            )}
           </div>
         ))}
       </div>
