@@ -64,15 +64,46 @@ export default function HeroHorizontalScroll() {
         style={{ width: `${images.length * 100}vw` }}
       >
         {images.map((src, idx) => (
-          <Image
-            key={idx}
-            src={src}
-            alt={`segmento-${idx}`}
-            width={1920}
-            height={1080}
-            className="w-screen h-screen object-cover flex-shrink-0"
-            style={{ scrollSnapAlign: "center" }}
-          />
+          <div key={idx} className="relative w-screen h-screen">
+            <Image
+              src={src}
+              alt={`segmento-${idx}`}
+              width={1920}
+              height={1080}
+              className="w-screen h-screen object-cover flex-shrink-0"
+              style={{ scrollSnapAlign: "center" }}
+            />
+            {/* Overlay gradiente preto */}
+            <div
+              className="absolute inset-0 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.0) 100%)",
+                opacity: 0.7,
+              }}
+            />
+            {/* Texto sobreposto */}
+            <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-20 px-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4 text-center">
+                {idx === 0
+                  ? "A evolução dos carros"
+                  : idx === images.length - 1
+                  ? "O futuro é elétrico"
+                  : ""}
+              </h2>
+              {idx === 0 && (
+                <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow">
+                  Do motor a combustão aos elétricos: conheça a história e o futuro
+                  da mobilidade!
+                </p>
+              )}
+              {idx === images.length - 1 && (
+                <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow">
+                  Descubra como os carros elétricos estão mudando o mundo!
+                </p>
+              )}
+            </div>
+          </div>
         ))}
       </div>
     </section>
