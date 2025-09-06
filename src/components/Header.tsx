@@ -5,14 +5,6 @@ import React, { useEffect, useState } from "react";
 function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [showNav, setShowNav] = useState(false);
-    const [language, setLanguage] = useState("pt-br");
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    const languages = [
-        { code: "pt-br", flag: "🇧🇷", name: "PT-BR" },
-        { code: "en", flag: "🇺🇸", name: "EN" },
-        { code: "es", flag: "🇪🇸", name: "ES" },
-    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -120,43 +112,6 @@ function Header() {
                         </span>
                     </li>
                 </ul>
-                <div className="flex items-center space-x-4">
-                    {/* Seletor de idioma moderno */}
-                    <div className="relative">
-                        <button
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600/30 to-green-600/30 backdrop-blur-sm border border-blue-400/30 text-blue-100 font-semibold transition-all duration-300 hover:from-blue-500/40 hover:to-green-500/40 hover:border-blue-300/50 hover:scale-105 shadow-lg"
-                        >
-                            <span>{languages.find(lang => lang.code === language)?.flag}</span>
-                            <span>{languages.find(lang => lang.code === language)?.name}</span>
-                            <svg
-                                className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        {isDropdownOpen && (
-                            <div className="absolute top-full right-0 mt-2 w-32 bg-slate-800/95 backdrop-blur-xl border border-blue-400/30 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-300">
-                                {languages.map((lang) => (
-                                    <button
-                                        key={lang.code}
-                                        onClick={() => {
-                                            setLanguage(lang.code);
-                                            setIsDropdownOpen(false);
-                                        }}
-                                        className="w-full flex items-center space-x-2 px-4 py-3 text-blue-100 hover:bg-gradient-to-r hover:from-blue-600/50 hover:to-green-600/50 transition-all duration-200 hover:text-white"
-                                    >
-                                        <span>{lang.flag}</span>
-                                        <span className="font-medium">{lang.name}</span>
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>
             </nav>
         </header>
     );
