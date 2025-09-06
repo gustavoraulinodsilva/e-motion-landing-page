@@ -2,10 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 
-
 function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [language, setLanguage] = useState("pt-br");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const languages = [
+        { code: "pt-br", flag: "🇧🇷", name: "PT-BR" },
+        { code: "en", flag: "🇺🇸", name: "EN" },
+        { code: "es", flag: "🇪🇸", name: "ES" },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,54 +25,108 @@ function Header() {
 
     return (
         <header
-            className={`fixed w-full z-50 transition-colors duration-300 ${
+            className={`fixed w-full z-50 transition-all duration-500 ${
                 scrolled
-                    ? "bg-[#0a1931] border-b border-blue-900 shadow-md backdrop-blur-lg"
-                    : "bg-transparent border-b border-transparent"
+                    ? "bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-green-900/95 backdrop-blur-xl border-b border-blue-400/30 shadow-xl"
+                    : "bg-gradient-to-r from-black/60 via-black/40 to-black/60 backdrop-blur-sm border-b border-transparent"
             }`}
         >
-            <nav className="flex items-center justify-between px-4 md:px-8 py-3 md:py-5">
-                <div className="flex items-center space-x-3">
-                    <span
-                        className={`inline-flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 shadow-md group hover:scale-110 ${scrolled ? "bg-blue-900" : "bg-black/40"} ${scrolled ? "animate-pulse" : ""}`}
-                        style={{ position: 'relative' }}
+            <nav className="flex items-center justify-between px-4 md:px-8 py-3 md:py-5 max-w-7xl mx-auto">
+                <div className="flex items-center space-x-3 group">
+                    <div
+                        className={`relative inline-flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-500 shadow-lg group-hover:scale-110 transform ${
+                            scrolled 
+                                ? "bg-gradient-to-br from-blue-500 to-green-500 rotate-0" 
+                                : "bg-gradient-to-br from-blue-600/80 to-green-600/80 rotate-12"
+                        }`}
                     >
-                        {/* Ícone de bateria estilizado */}
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="7" width="16" height="10" rx="3" fill="#38bdf8" stroke="#1e40af" strokeWidth="1.5"/>
-                            <rect x="19" y="10" width="2" height="4" rx="1" fill="#facc15" stroke="#ca8a04" strokeWidth="1.2"/>
-                            <path d="M7 11v2m2-2v2m2-2v2" stroke="#1e40af" strokeWidth="1.2" strokeLinecap="round"/>
+                        {/* Ícone de bateria melhorado */}
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="relative z-10">
+                            <rect x="3" y="7" width="16" height="10" rx="3" fill="white" fillOpacity="0.9"/>
+                            <rect x="19" y="10" width="2" height="4" rx="1" fill="#fbbf24"/>
+                            <rect x="5" y="9" width="12" height="6" rx="2" fill="url(#batteryGradient)"/>
+                            <defs>
+                                <linearGradient id="batteryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#10b981"/>
+                                    <stop offset="100%" stopColor="#3b82f6"/>
+                                </linearGradient>
+                            </defs>
                         </svg>
-                        {/* Borda animada no hover */}
-                        <span className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-blue-400 group-hover:animate-pulse transition-all duration-300 pointer-events-none"></span>
-                    </span>
-                    <h1 className="text-2xl font-bold text-blue-100 tracking-tight select-none transition-colors duration-300">
+                        {/* Efeito de brilho */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500"></div>
+                    </div>
+                    <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-200 to-green-200 bg-clip-text text-transparent tracking-tight select-none transition-all duration-500 group-hover:scale-105">
                         E-motion
                     </h1>
                 </div>
-                <ul className={`flex items-center space-x-4 md:space-x-6 transition-all duration-500 ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
+                <ul className={`hidden md:flex items-center space-x-6 transition-all duration-700 ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
                     <li>
-                        <a href="#inicio" className="text-blue-300 font-semibold transition-all duration-200 inline-block transform hover:text-white hover:scale-110">Início</a>
+                        <a href="#inicio" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                            Início
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#desafio" className="text-blue-300 font-semibold transition-all duration-200 inline-block transform hover:text-white hover:scale-110">Desafio</a>
+                        <a href="#desafio" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                            Desafio
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#solucao" className="text-blue-300 font-semibold transition-all duration-200 inline-block transform hover:text-white hover:scale-110">Solução</a>
+                        <a href="#solucao" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                            Solução
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#coleta" className="text-blue-300 font-semibold transition-all duration-200 inline-block transform hover:text-white hover:scale-110">Coleta</a>
+                        <a href="#coleta" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                            Coleta
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#curiosidades" className="text-blue-300 font-semibold transition-all duration-200 inline-block transform hover:text-white hover:scale-110">Curiosidades</a>
+                        <a href="#curiosidades" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                            Curiosidades
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </li>
                 </ul>
-                <div className="flex items-center">
-                    <select className="pl-4 pr-3 py-1.5 rounded-md border border-blue-800 bg-[#112244] text-blue-100 font-semibold focus:outline-none focus:ring-4 focus:ring-blue-700/40 shadow-sm transition-all duration-300 hover:border-blue-400 cursor-pointer transform hover:scale-105" style={{minWidth:'90px'}}>
-                        <option value="pt-br">PT-BR</option>
-                        <option value="en">EN</option>
-                        <option value="es">ES</option>
-                    </select>
+                <div className="flex items-center space-x-4">
+                    {/* Seletor de idioma moderno */}
+                    <div className="relative">
+                        <button
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600/30 to-green-600/30 backdrop-blur-sm border border-blue-400/30 text-blue-100 font-semibold transition-all duration-300 hover:from-blue-500/40 hover:to-green-500/40 hover:border-blue-300/50 hover:scale-105 shadow-lg"
+                        >
+                            <span>{languages.find(lang => lang.code === language)?.flag}</span>
+                            <span>{languages.find(lang => lang.code === language)?.name}</span>
+                            <svg
+                                className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        {isDropdownOpen && (
+                            <div className="absolute top-full right-0 mt-2 w-32 bg-slate-800/95 backdrop-blur-xl border border-blue-400/30 rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2 duration-300">
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang.code}
+                                        onClick={() => {
+                                            setLanguage(lang.code);
+                                            setIsDropdownOpen(false);
+                                        }}
+                                        className="w-full flex items-center space-x-2 px-4 py-3 text-blue-100 hover:bg-gradient-to-r hover:from-blue-600/50 hover:to-green-600/50 transition-all duration-200 hover:text-white"
+                                    >
+                                        <span>{lang.flag}</span>
+                                        <span className="font-medium">{lang.name}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </nav>
         </header>
