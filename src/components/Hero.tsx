@@ -92,15 +92,28 @@ export default function HeroHorizontalScroll() {
                   : ""}
               </h2>
               {idx === 0 && (
-                <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow">
-                  Do motor a combustão aos elétricos: conheça a história e o futuro
-                  da mobilidade!
-                </p>
+                <>
+                  <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow mb-6">
+                    Do motor a combustão aos elétricos: conheça a história e o futuro
+                    da mobilidade!
+                  </p>
+                </>
               )}
               {idx === images.length - 1 && (
-                <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow">
-                  Descubra como os carros elétricos estão mudando o mundo!
-                </p>
+                <>
+                  <p className="text-lg md:text-2xl text-white max-w-2xl text-center drop-shadow mb-6">
+                    Descubra como os carros elétricos estão mudando o mundo!
+                  </p>
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById("carros-eletricos");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg hover:scale-105"
+                  >
+                    Saiba Mais
+                  </button>
+                </>
               )}
             </div>
           </div>
