@@ -2,6 +2,7 @@
 
 import Challenge from '@/components/Challenge';
 import CollectionPoints from '@/components/CollectionPoints';
+import Curiosities from '@/components/Curiosities';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -19,6 +20,7 @@ export default function Home() {
           <Challenge/>
           <Solution/>
           <CollectionPoints/>
+          <Curiosities/>
         </div>
       </main>
       <Footer/>
