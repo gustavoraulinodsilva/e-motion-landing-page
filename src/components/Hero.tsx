@@ -54,7 +54,7 @@ export default function HeroHorizontalScroll() {
   }, []);
 
   return (
-    <section
+    <section id="inicio"
       ref={sectionRef}
       className="relative w-full h-screen bg-neutral-50 overflow-hidden"
     >

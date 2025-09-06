@@ -23,12 +23,26 @@ function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Função para scroll suave entre seções
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const headerHeight = 80; // Altura do header fixo
+            const elementPosition = element.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <header
             className={`fixed w-full z-50 transition-all duration-500 ${
                 scrolled
-                    ? "bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-green-900/95 backdrop-blur-xl border-b border-blue-400/30 shadow-xl"
-                    : "bg-gradient-to-r from-black/60 via-black/40 to-black/60 backdrop-blur-sm border-b border-transparent"
+                    ? "bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-xl border-b border-blue-400/30 shadow-xl"
+                    : "bg-transparent backdrop-blur-sm border-b border-transparent"
             }`}
         >
             <nav className="flex items-center justify-between px-4 md:px-8 py-3 md:py-5 max-w-7xl mx-auto">
@@ -61,34 +75,49 @@ function Header() {
                 </div>
                 <ul className={`hidden md:flex items-center space-x-6 transition-all duration-700 ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
                     <li>
-                        <a href="#inicio" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                        <span 
+                            onClick={() => scrollToSection('inicio')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
                             Início
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+                        </span>
                     </li>
                     <li>
-                        <a href="#desafio" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                        <span 
+                            onClick={() => scrollToSection('desafio')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
                             Desafio
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+                        </span>
                     </li>
                     <li>
-                        <a href="#solucao" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                        <span 
+                            onClick={() => scrollToSection('solucao')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
                             Solução
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+                        </span>
                     </li>
                     <li>
-                        <a href="#coleta" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                        <span 
+                            onClick={() => scrollToSection('coleta')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
                             Coleta
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+                        </span>
                     </li>
                     <li>
-                        <a href="#curiosidades" className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group">
+                        <span 
+                            onClick={() => scrollToSection('curiosidades')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
                             Curiosidades
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
+                        </span>
                     </li>
                 </ul>
                 <div className="flex items-center space-x-4">
