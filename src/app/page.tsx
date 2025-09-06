@@ -4,6 +4,7 @@ import Challenge from '@/components/Challenge';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Solution from '@/components/Solution';
 import React from 'react';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <div className="min-h-screen">
           <Hero/>
           <Challenge/>
+          <Solution/>
         </div>
       </main>
       <Footer/>
