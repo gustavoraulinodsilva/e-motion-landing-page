@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,6 +14,31 @@ function Header() {
         window.addEventListener("scroll", handleScroll);
         setShowNav(true);
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Fechar menu mobile ao clicar fora
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Element;
+            if (mobileMenuOpen && !target.closest('header')) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [mobileMenuOpen]);
+
+    // Fechar menu mobile ao redimensionar para desktop
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) { // md breakpoint
+                setMobileMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     // Função para scroll suave entre seções
@@ -27,9 +53,12 @@ function Header() {
                 behavior: 'smooth'
             });
         }
+        // Fechar menu mobile após navegação
+        setMobileMenuOpen(false);
     };
 
     return (
+        <>
         <header
             className={`fixed w-full z-50 transition-all duration-500 ${
                 scrolled
@@ -112,8 +141,75 @@ function Header() {
                         </span>
                     </li>
                 </ul>
+
+                {/* Botão Hamburger Mobile */}
+                <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none"
+                    aria-label="Menu"
+                >
+                    <span 
+                        className={`block w-6 h-0.5 bg-blue-200 transition-all duration-300 ${
+                            mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                        }`}
+                    ></span>
+                    <span 
+                        className={`block w-6 h-0.5 bg-blue-200 transition-all duration-300 ${
+                            mobileMenuOpen ? 'opacity-0' : ''
+                        }`}
+                    ></span>
+                    <span 
+                        className={`block w-6 h-0.5 bg-blue-200 transition-all duration-300 ${
+                            mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                        }`}
+                    ></span>
+                </button>
             </nav>
+
+            {/* Menu Mobile */}
+            <div className={`md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-xl border-t border-blue-400/20 shadow-2xl transition-all duration-300 overflow-hidden ${
+                mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+                <nav className="px-4 py-6 space-y-4">
+                    {[
+                        { name: 'Início', id: 'inicio', icon: '🏠' },
+                        { name: 'Desafio', id: 'desafio', icon: '⚡' },
+                        { name: 'Solução', id: 'solucao', icon: '💡' },
+                        { name: 'Coleta', id: 'coleta', icon: '♻️' },
+                        { name: 'Curiosidades', id: 'curiosidades', icon: '🧠' }
+                    ].map((item, index) => (
+                        <button
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className="flex items-center w-full text-left px-4 py-3 rounded-xl text-blue-200 font-semibold bg-white/5 hover:bg-gradient-to-r hover:from-blue-600/30 hover:to-green-600/30 hover:text-white transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-blue-400/30 group"
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                        >
+                            <span className="text-xl mr-3 group-hover:scale-110 transition-transform duration-300">
+                                {item.icon}
+                            </span>
+                            <span className="flex-1">{item.name}</span>
+                            <svg 
+                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    ))}
+                </nav>
+            </div>
         </header>
+
+        {/* Overlay escuro para mobile */}
+        {mobileMenuOpen && (
+            <div 
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+            />
+        )}
+        </>
     );
 }
 
