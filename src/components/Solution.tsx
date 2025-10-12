@@ -20,69 +20,69 @@ interface TimelineMilestone {
 }
 
 const Solution: React.FC = () => {
-  // Array tipado com as soluções de padronização
+  // Array tipado com as soluções da logística reversa
   const solutions: SolutionItem[] = [
     {
       id: 1,
-      title: "Formato Universal",
-      description: "Módulos padronizados como o conceito USB-C, permitindo intercambialidade total entre diferentes marcas e modelos de veículos elétricos.",
-      icon: "🔌",
-      benefit: "Compatibilidade universal"
+      title: "Diagnóstico Avançado",
+      description: "Avaliação completa do 'estado de saúde' (SOH) dos módulos e células para determinar o melhor destino da bateria após o uso no veículo.",
+      icon: "�",
+      benefit: "Decisão inteligente"
     },
     {
       id: 2,
-      title: "Compatibilidade Elétrica",
-      description: "Tensão e protocolos de comunicação únicos, garantindo segurança e eficiência em qualquer sistema de carregamento ou reciclagem.",
-      icon: "⚡",
-      benefit: "Segurança otimizada"
+      title: "Remanufatura Eficiente",
+      description: "Substituição de módulos degradados por componentes novos, permitindo que a bateria volte a ser usada em veículos com garantia.",
+      icon: "🔧",
+      benefit: "Segunda chance no veículo"
     },
     {
       id: 3,
-      title: "Battery Swapping",
-      description: "Troca rápida em postos especializados, como já implementado pela NIO na China, permitindo 'reabastecimento' em menos de 5 minutos.",
-      icon: "🔄",
-      benefit: "Velocidade de troca"
+      title: "Segunda Vida (Second Life)",
+      description: "Reconfiguração para armazenamento estacionário em sistemas solares, no-breaks e estabilização da rede elétrica por mais 5-10 anos.",
+      icon: "🏠",
+      benefit: "Extensão da vida útil"
     },
     {
       id: 4,
-      title: "Reutilização Inteligente",
-      description: "Baterias antigas de veículos podem ter segunda vida em sistemas de energia solar residencial, maximizando seu valor útil.",
+      title: "Reciclagem Avançada",
+      description: "Recuperação de materiais valiosos através de hidrometalurgia, obtendo lítio, cobalto, níquel e manganês com alta pureza.",
       icon: "♻️",
-      benefit: "Economia circular"
+      benefit: "Economia circular completa"
     }
   ];
 
-  // Timeline de padronização em outros setores
+  // Timeline da evolução da logística reversa
   const timelineMilestones: TimelineMilestone[] = [
     {
-      year: "1990s",
-      sector: "Telefonia",
-      standard: "GSM Global",
-      impact: "Roaming mundial"
+      year: "2008",
+      sector: "Baterias Chumbo-Ácido",
+      standard: "CONAMA 401/2008",
+      impact: "99% de reciclagem no Brasil"
     },
     {
-      year: "2000s",
-      sector: "Conectividade",
-      standard: "USB Padrão",
-      impact: "Dispositivos universais"
+      year: "2015",
+      sector: "Primeiros VE",
+      standard: "Casos isolados",
+      impact: "Sem sistema estruturado"
     },
     {
-      year: "2010s",
-      sector: "Pilhas",
-      standard: "AA/AAA Global",
-      impact: "Intercambialidade total"
+      year: "2020",
+      sector: "Conceito Second Life",
+      standard: "Projetos piloto",
+      impact: "Extensão da vida útil"
     },
     {
-      year: "2020s",
-      sector: "Carregamento",
-      standard: "USB-C Universal",
-      impact: "Cabo único para tudo"
+      year: "2021",
+      sector: "Legislação VE",
+      standard: "PL 2327/2021",
+      impact: "Marco regulatório em tramitação"
     },
     {
-      year: "2030s",
-      sector: "Baterias EV",
-      standard: "Módulos Padrão",
-      impact: "Revolução na mobilidade"
+      year: "2025",
+      sector: "Sistema Estruturado",
+      standard: "Hierarquia de Valor",
+      impact: "Economia circular completa"
     }
   ];
 
@@ -92,10 +92,11 @@ const Solution: React.FC = () => {
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-5xl md:text-6xl font-light text-white tracking-wide mb-6">
-            Padronização: A Chave do Futuro
+            A Solução: Logística Reversa Estruturada
           </h2>
-          <p className="text-xl text-slate-200 font-light leading-relaxed max-w-3xl mx-auto">
-            Soluções inovadoras que revolucionarão a reciclagem e reutilização de baterias de veículos elétricos
+          <p className="text-xl text-slate-200 font-light leading-relaxed max-w-4xl mx-auto">
+            Um sistema multifacetado que maximiza o valor das baterias através da 
+            Hierarquia de Valor, diferindo das baterias convencionais que seguem direto para reciclagem
           </p>
         </div>
 
@@ -122,10 +123,10 @@ const Solution: React.FC = () => {
           ))}
         </div>
 
-        {/* Timeline de Padronização */}
+        {/* Timeline da Logística Reversa */}
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20">
           <h3 className="text-3xl font-light text-white text-center mb-12">
-            Timeline: Como Outros Setores Se Padronizaram
+            Evolução da Logística Reversa no Brasil
           </h3>
           
           <div className="relative">
@@ -201,10 +202,116 @@ const Solution: React.FC = () => {
           </div>
         </div>
 
+        {/* Processos de Reciclagem */}
+        <div className="mt-20 bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30">
+          <h3 className="text-2xl font-semibold text-white text-center mb-8">
+            🔬 Tecnologias de Reciclagem
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Pirometalurgia */}
+            <div className="bg-red-500/10 rounded-xl p-6 border border-red-400/20">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">🔥</span>
+                <h4 className="text-xl font-bold text-red-300">Pirometalurgia</h4>
+              </div>
+              <p className="text-slate-200 text-sm mb-4 leading-relaxed">
+                As baterias são incineradas em fornos de alta temperatura para recuperar metais 
+                como cobalto, níquel e cobre na forma de liga metálica.
+              </p>
+              
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Eficiência:</span>
+                  <span className="text-red-300 font-bold">60-70%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Recupera:</span>
+                  <span className="text-red-300 font-bold">Co, Ni, Cu</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Perde:</span>
+                  <span className="text-red-300 font-bold">Li, Al</span>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-3 bg-red-500/10 rounded-lg border border-red-400/20">
+                <p className="text-red-200 text-xs text-center">
+                  ❌ Menos eficiente, mas tecnologia mais simples
+                </p>
+              </div>
+            </div>
+
+            {/* Hidrometalurgia */}
+            <div className="bg-green-500/10 rounded-xl p-6 border border-green-400/20">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">⚗️</span>
+                <h4 className="text-xl font-bold text-green-300">Hidrometalurgia</h4>
+              </div>
+              <p className="text-slate-200 text-sm mb-4 leading-relaxed">
+                Processo químico que usa banhos de ácido para dissolver e separar metais valiosos 
+                (lítio, cobalto, níquel, manganês) com alta pureza.
+              </p>
+              
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Eficiência:</span>
+                  <span className="text-green-300 font-bold">90-95%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Recupera:</span>
+                  <span className="text-green-300 font-bold">Li, Co, Ni, Mn</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300 text-sm">Pureza:</span>
+                  <span className="text-green-300 font-bold">Alta</span>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-3 bg-green-500/10 rounded-lg border border-green-400/20">
+                <p className="text-green-200 text-xs text-center">
+                  ✅ Mais eficiente e ambientalmente amigável
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Processo da Black Mass */}
+          <div className="mt-8 bg-slate-800/50 rounded-xl p-6 border border-slate-600/30">
+            <h4 className="text-lg font-semibold text-white mb-4 text-center">
+              🖤 Processo da &quot;Massa Negra&quot; (Black Mass)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+              <div className="bg-slate-700/30 p-3 rounded-lg">
+                <div className="text-xl mb-2">🔨</div>
+                <div className="text-slate-300 text-sm">1. Trituração</div>
+              </div>
+              <div className="bg-slate-700/30 p-3 rounded-lg">
+                <div className="text-xl mb-2">🖤</div>
+                <div className="text-slate-300 text-sm">2. Massa Negra</div>
+              </div>
+              <div className="bg-slate-700/30 p-3 rounded-lg">
+                <div className="text-xl mb-2">🧪</div>
+                <div className="text-slate-300 text-sm">3. Banho Ácido</div>
+              </div>
+              <div className="bg-slate-700/30 p-3 rounded-lg">
+                <div className="text-xl mb-2">✨</div>
+                <div className="text-slate-300 text-sm">4. Separação</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25">
-            Veja os Pontos de Coleta →
+          <button 
+            onClick={() => {
+              const el = document.getElementById("coleta");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+          >
+            Explore a Logística Reversa →
           </button>
         </div>
       </div>

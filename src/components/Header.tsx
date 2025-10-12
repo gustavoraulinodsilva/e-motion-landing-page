@@ -127,7 +127,16 @@ function Header() {
                             onClick={() => scrollToSection('coleta')} 
                             className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
                         >
-                            Coleta
+                            Logística Reversa
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
+                        </span>
+                    </li>
+                    <li>
+                        <span 
+                            onClick={() => scrollToSection('mercado-futuro')} 
+                            className="relative text-blue-200 font-semibold transition-all duration-300 inline-block transform hover:text-white hover:scale-110 group cursor-pointer"
+                        >
+                            Mercado
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 transition-all duration-300 group-hover:w-full"></span>
                         </span>
                     </li>
@@ -175,7 +184,8 @@ function Header() {
                         { name: 'Início', id: 'inicio', icon: '🏠' },
                         { name: 'Desafio', id: 'desafio', icon: '⚡' },
                         { name: 'Solução', id: 'solucao', icon: '💡' },
-                        { name: 'Coleta', id: 'coleta', icon: '♻️' },
+                        { name: 'Logística Reversa', id: 'coleta', icon: '♻️' },
+                        { name: 'Mercado', id: 'mercado-futuro', icon: '📈' },
                         { name: 'Curiosidades', id: 'curiosidades', icon: '🧠' }
                     ].map((item, index) => (
                         <button

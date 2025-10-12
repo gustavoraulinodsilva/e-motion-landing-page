@@ -2,20 +2,15 @@
 
 import React, { useState } from "react";
 
-// Interface para definir o tipo dos pontos de coleta
-interface CollectionPoint {
+// Interface para as etapas da hierarquia de valor
+interface ValueHierarchyStep {
   id: number;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  type: 'Reciclagem' | 'Reaproveitamento' | 'Híbrido';
-  capacity: string;
-  contact: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
+  title: string;
+  description: string;
+  icon: string;
+  duration: string;
+  efficiency: string;
+  applicableTo: 'Chumbo-Ácido' | 'Íon-Lítio' | 'Ambos';
 }
 
 // Interface para as etapas do processo
@@ -28,75 +23,47 @@ interface ProcessStep {
 }
 
 const CollectionPoints: React.FC = () => {
-  const [selectedFilter, setSelectedFilter] = useState<string>('Todos');
+  const [activeTab, setActiveTab] = useState<'Convencionais' | 'VeiculosEletricos'>('Convencionais');
 
-  // Array tipado com pontos de coleta
-  const collectionPoints: CollectionPoint[] = [
+
+
+  // Hierarquia de Valor para baterias de VE
+  const valueHierarchy: ValueHierarchyStep[] = [
     {
       id: 1,
-      name: "EcoBattery São Paulo",
-      address: "Av. Paulista, 1578",
-      city: "São Paulo",
-      state: "SP",
-      type: "Reciclagem",
-      capacity: "500 baterias/mês",
-      contact: "(11) 3000-1234",
-      coordinates: { lat: -23.5613, lng: -46.6565 }
+      title: "Reutilização",
+      description: "Bateria usada em outro veículo após diagnóstico completo",
+      icon: "🔄",
+      duration: "1-2 dias",
+      efficiency: "100%",
+      applicableTo: "Íon-Lítio"
     },
     {
       id: 2,
-      name: "GreenTech Rio",
-      address: "Rua Copacabana, 890",
-      city: "Rio de Janeiro",
-      state: "RJ",
-      type: "Híbrido",
-      capacity: "300 baterias/mês",
-      contact: "(21) 2500-5678",
-      coordinates: { lat: -22.9068, lng: -43.1729 }
+      title: "Remanufatura",
+      description: "Reparo da bateria, substituindo módulos ou células defeituosas",
+      icon: "🔧",
+      duration: "1-2 semanas",
+      efficiency: "90-95%",
+      applicableTo: "Íon-Lítio"
     },
     {
       id: 3,
-      name: "Solar Reuse BH",
-      address: "Av. Afonso Pena, 1200",
-      city: "Belo Horizonte",
-      state: "MG",
-      type: "Reaproveitamento",
-      capacity: "200 baterias/mês",
-      contact: "(31) 3400-9876",
-      coordinates: { lat: -19.9167, lng: -43.9345 }
+      title: "Segunda Vida",
+      description: "Uso em armazenamento de energia estacionária (solar, backup)",
+      icon: "🏠",
+      duration: "5-10 anos",
+      efficiency: "70-80%",
+      applicableTo: "Íon-Lítio"
     },
     {
       id: 4,
-      name: "TechCycle Curitiba",
-      address: "Rua XV de Novembro, 500",
-      city: "Curitiba",
-      state: "PR",
-      type: "Reciclagem",
-      capacity: "400 baterias/mês",
-      contact: "(41) 3200-4567",
-      coordinates: { lat: -25.4284, lng: -49.2733 }
-    },
-    {
-      id: 5,
-      name: "EnergyLoop Porto Alegre",
-      address: "Av. Borges de Medeiros, 800",
-      city: "Porto Alegre",
-      state: "RS",
-      type: "Híbrido",
-      capacity: "350 baterias/mês",
-      contact: "(51) 3100-7890",
-      coordinates: { lat: -30.0346, lng: -51.2177 }
-    },
-    {
-      id: 6,
-      name: "NorthBattery Manaus",
-      address: "Av. Eduardo Ribeiro, 650",
-      city: "Manaus",
-      state: "AM",
-      type: "Reaproveitamento",
-      capacity: "150 baterias/mês",
-      contact: "(92) 3300-2345",
-      coordinates: { lat: -3.1190, lng: -60.0217 }
+      title: "Reciclagem",
+      description: "Recuperação de materiais através de processos químicos",
+      icon: "♻️",
+      duration: "2-4 semanas",
+      efficiency: "60-95%",
+      applicableTo: "Ambos"
     }
   ];
 
@@ -139,20 +106,9 @@ const CollectionPoints: React.FC = () => {
     }
   ];
 
-  const filterTypes = ['Todos', 'Reciclagem', 'Reaproveitamento', 'Híbrido'];
 
-  const filteredPoints = selectedFilter === 'Todos' 
-    ? collectionPoints 
-    : collectionPoints.filter(point => point.type === selectedFilter);
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'Reciclagem': return 'bg-red-500/20 text-red-300 border-red-400/30';
-      case 'Reaproveitamento': return 'bg-green-500/20 text-green-300 border-green-400/30';
-      case 'Híbrido': return 'bg-blue-500/20 text-blue-300 border-blue-400/30';
-      default: return 'bg-gray-500/20 text-gray-300 border-gray-400/30';
-    }
-  };
+
 
   return (
     <section id="coleta" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
@@ -160,113 +116,248 @@ const CollectionPoints: React.FC = () => {
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-5xl md:text-6xl font-light text-white tracking-wide mb-6">
-            Onde Descartar Hoje
+            Logística Reversa de Baterias
           </h2>
-          <p className="text-xl text-slate-200 font-light leading-relaxed max-w-3xl mx-auto">
-            Encontre os pontos de coleta mais próximos e entenda como funciona o processo atual de reciclagem
+          <p className="text-xl text-slate-200 font-light leading-relaxed max-w-4xl mx-auto">
+            Entenda como funciona o descarte responsável no Brasil: da regulamentação CONAMA 401/2008 
+            para baterias convencionais aos novos desafios das baterias de veículos elétricos
           </p>
         </div>
 
-        {/* Filtros */}
+        {/* Tabs para diferentes tipos de bateria */}
         <div className="flex justify-center mb-12">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-2 border border-white/20">
             <div className="flex gap-2">
-              {filterTypes.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setSelectedFilter(type)}
-                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                    selectedFilter === type
-                      ? 'bg-cyan-500 text-white shadow-lg'
-                      : 'text-slate-200 hover:bg-white/10'
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Lista de Pontos de Coleta */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {filteredPoints.map((point: CollectionPoint) => (
-            <div 
-              key={point.id}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-lg font-semibold text-white">{point.name}</h3>
-                <span className={`text-xs font-medium px-3 py-1 rounded-full border ${getTypeColor(point.type)}`}>
-                  {point.type}
-                </span>
-              </div>
-              
-              <div className="space-y-2 text-slate-200 text-sm">
-                <div className="flex items-center gap-2">
-                  <span>📍</span>
-                  <span>{point.address}, {point.city} - {point.state}</span>
+              <button
+                onClick={() => setActiveTab('Convencionais')}
+                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 ${
+                  activeTab === 'Convencionais'
+                    ? 'bg-orange-500 text-white shadow-lg'
+                    : 'text-slate-200 hover:bg-white/10'
+                }`}
+              >
+                <span className="text-xl">🔋</span>
+                <div className="text-left">
+                  <div>Baterias Convencionais</div>
+                  <div className="text-xs opacity-75">Chumbo-Ácido • 99% Reciclagem</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span>📊</span>
-                  <span>{point.capacity}</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('VeiculosEletricos')}
+                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 ${
+                  activeTab === 'VeiculosEletricos'
+                    ? 'bg-green-500 text-white shadow-lg'
+                    : 'text-slate-200 hover:bg-white/10'
+                }`}
+              >
+                <span className="text-xl">⚡</span>
+                <div className="text-left">
+                  <div>Veículos Elétricos</div>
+                  <div className="text-xs opacity-75">Íon-Lítio • Hierarquia de Valor</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span>📞</span>
-                  <span>{point.contact}</span>
-                </div>
-              </div>
-              
-              <button className="w-full mt-4 bg-cyan-500/20 text-cyan-300 py-2 rounded-lg hover:bg-cyan-500/30 transition-colors duration-300 border border-cyan-400/30">
-                Ver Detalhes
               </button>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Estatísticas dos Pontos de Coleta */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20 mb-16">
-          <h3 className="text-3xl font-light text-white text-center mb-8">
-            Cobertura Nacional
-          </h3>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center bg-white/5 rounded-xl p-6 border border-white/20">
-              <div className="text-3xl mb-2">🏢</div>
-              <div className="text-2xl font-bold text-cyan-300 mb-2">{collectionPoints.length}</div>
-              <div className="text-slate-300 text-sm">Pontos de Coleta</div>
-            </div>
-            
-            <div className="text-center bg-white/5 rounded-xl p-6 border border-white/20">
-              <div className="text-3xl mb-2">🗺️</div>
-              <div className="text-2xl font-bold text-green-300 mb-2">{new Set(collectionPoints.map(p => p.state)).size}</div>
-              <div className="text-slate-300 text-sm">Estados Cobertos</div>
-            </div>
-            
-            <div className="text-center bg-white/5 rounded-xl p-6 border border-white/20">
-              <div className="text-3xl mb-2">⚡</div>
-              <div className="text-2xl font-bold text-yellow-300 mb-2">
-                {collectionPoints.reduce((sum, p) => sum + parseInt(p.capacity.split(' ')[0]), 0)}
+        {/* Conteúdo baseado na aba ativa */}
+        {activeTab === 'Convencionais' && (
+          <div>
+            {/* Processo Regulamentado (CONAMA 401/2008) */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 mb-16">
+              <h3 className="text-3xl font-light text-white text-center mb-8">
+                🏛️ Sistema Regulamentado Brasileiro
+              </h3>
+              <div className="text-center mb-8">
+                <div className="bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 rounded-2xl p-6 max-w-2xl mx-auto">
+                  <h4 className="text-xl font-bold text-orange-300 mb-4">Resolução CONAMA 401/2008</h4>
+                  <p className="text-slate-200">
+                    Marco regulatório que estabelece a <strong>responsabilidade compartilhada</strong> e 
+                    obriga pontos de venda a receber baterias usadas dos consumidores.
+                  </p>
+                </div>
               </div>
-              <div className="text-slate-300 text-sm">Baterias/Mês</div>
-            </div>
-            
-            <div className="text-center bg-white/5 rounded-xl p-6 border border-white/20">
-              <div className="text-3xl mb-2">🎯</div>
-              <div className="text-2xl font-bold text-purple-300 mb-2">24h</div>
-              <div className="text-slate-300 text-sm">Atendimento</div>
+
+              {/* Fluxo da Logística Reversa */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                {[
+                  { step: "1", title: "Consumidor", desc: "Troca bateria e recebe desconto", icon: "👤" },
+                  { step: "2", title: "Ponto de Venda", desc: "Loja de autopeças/oficina", icon: "🏪" },
+                  { step: "3", title: "Distribuidor", desc: "Transporte seguro", icon: "🚚" },
+                  { step: "4", title: "Fabricante", desc: "Reciclagem 99%", icon: "🏭" }
+                ].map((item, index) => (
+                  <div key={index} className="relative">
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/20 text-center h-full">
+                      <div className="text-3xl mb-3">{item.icon}</div>
+                      <div className="text-orange-300 font-bold text-sm mb-2">ETAPA {item.step}</div>
+                      <h4 className="text-white font-semibold mb-2">{item.title}</h4>
+                      <p className="text-slate-200 text-sm">{item.desc}</p>
+                    </div>
+                    {index < 3 && (
+                      <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
+                        <div className="w-6 h-6 bg-orange-400 rounded-full flex items-center justify-center text-slate-900 text-sm font-bold">
+                          →
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Eficiência da Reciclagem */}
+              <div className="bg-gradient-to-r from-green-500/20 to-orange-500/20 rounded-2xl p-6 border border-green-400/30">
+                <div className="grid md:grid-cols-3 gap-6 text-center">
+                  <div>
+                    <div className="text-3xl font-bold text-green-400 mb-2">99%</div>
+                    <div className="text-slate-200 text-sm">Taxa de Reciclagem</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-blue-400 mb-2">100%</div>
+                    <div className="text-slate-200 text-sm">Chumbo Recuperado</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-purple-400 mb-2">Pioneiro</div>
+                    <div className="text-slate-200 text-sm">Brasil no Mundo</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-slate-300 text-sm">
-              📞 Central de Atendimento: <span className="text-cyan-300 font-semibold">0800-123-4567</span>
-            </p>
-            <p className="text-slate-300 text-xs mt-2">
-              Encontre o ponto mais próximo ou agende uma coleta domiciliar
-            </p>
+        )}
+
+        {activeTab === 'VeiculosEletricos' && (
+          <div>
+            {/* Hierarquia de Valor */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 mb-16">
+              <h3 className="text-3xl font-light text-white text-center mb-8">
+                📊 Hierarquia de Valor para Baterias de VE
+              </h3>
+              <p className="text-center text-slate-200 mb-12 max-w-3xl mx-auto">
+                O conceito-chave é maximizar o valor e vida útil da bateria antes do descarte final, 
+                seguindo uma sequência hierárquica de decisões.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {valueHierarchy.map((step, index) => (
+                  <div key={step.id} className="relative">
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/20 h-full flex flex-col">
+                      <div className="text-center mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-2xl shadow-lg mx-auto mb-3">
+                          {step.icon}
+                        </div>
+                        <div className="text-green-300 font-bold text-sm mb-1">NÍVEL {step.id}</div>
+                        <h4 className="text-white font-semibold text-lg">{step.title}</h4>
+                      </div>
+                      
+                      <div className="flex-grow">
+                        <p className="text-slate-200 text-sm leading-relaxed mb-4">{step.description}</p>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-xs">
+                          <span className="text-slate-400">Duração:</span>
+                          <span className="text-cyan-300 font-medium">{step.duration}</span>
+                        </div>
+                        <div className="flex justify-between text-xs">
+                          <span className="text-slate-400">Eficiência:</span>
+                          <span className="text-green-300 font-medium">{step.efficiency}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {index < valueHierarchy.length - 1 && (
+                      <div className="hidden lg:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
+                        <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center text-slate-900 text-sm font-bold">
+                          ↓
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Processos de Reciclagem */}
+              <div className="grid md:grid-cols-2 gap-8 mt-12">
+                <div className="bg-red-500/10 rounded-2xl p-6 border border-red-400/20">
+                  <h4 className="text-xl font-bold text-red-300 mb-4">🔥 Pirometalurgia</h4>
+                  <p className="text-slate-200 text-sm mb-4">
+                    Incineração em fornos de alta temperatura para recuperar metais como cobalto, 
+                    níquel e cobre. O lítio e alumínio são perdidos no processo.
+                  </p>
+                  <div className="bg-red-500/10 rounded-lg p-3">
+                    <div className="text-red-300 font-bold">Eficiência: 60-70%</div>
+                  </div>
+                </div>
+
+                <div className="bg-green-500/10 rounded-2xl p-6 border border-green-400/20">
+                  <h4 className="text-xl font-bold text-green-300 mb-4">⚗️ Hidrometalurgia</h4>
+                  <p className="text-slate-200 text-sm mb-4">
+                    Processo químico que usa banhos de ácido para dissolver e separar metais valiosos 
+                    (lítio, cobalto, níquel, manganês) com alta pureza.
+                  </p>
+                  <div className="bg-green-500/10 rounded-lg p-3">
+                    <div className="text-green-300 font-bold">Eficiência: 90-95%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desafios no Brasil */}
+            <div className="bg-gradient-to-r from-yellow-900/30 to-red-900/30 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/30 mb-16">
+              <h3 className="text-2xl font-semibold text-white text-center mb-8">
+                ⚠️ Desafios Atuais no Brasil
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-yellow-300 mb-4">🚧 Obstáculos</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 bg-red-500/10 p-3 rounded-lg border border-red-400/20">
+                      <span className="text-red-300">📊</span>
+                      <span className="text-slate-200 text-sm">Volume baixo de baterias em fim de vida</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-red-500/10 p-3 rounded-lg border border-red-400/20">
+                      <span className="text-red-300">⚖️</span>
+                      <span className="text-slate-200 text-sm">Legislação ainda em desenvolvimento</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-red-500/10 p-3 rounded-lg border border-red-400/20">
+                      <span className="text-red-300">💰</span>
+                      <span className="text-slate-200 text-sm">Custos elevados de reciclagem</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-red-500/10 p-3 rounded-lg border border-red-400/20">
+                      <span className="text-red-300">🚚</span>
+                      <span className="text-slate-200 text-sm">Logística como material perigoso</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-green-300 mb-4">🎯 Perspectivas</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 bg-green-500/10 p-3 rounded-lg border border-green-400/20">
+                      <span className="text-green-300">📈</span>
+                      <span className="text-slate-200 text-sm">Mercado de US$ 4,2 bi até 2030</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-green-500/10 p-3 rounded-lg border border-green-400/20">
+                      <span className="text-green-300">🏛️</span>
+                      <span className="text-slate-200 text-sm">PL 2327/2021 em tramitação</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-green-500/10 p-3 rounded-lg border border-green-400/20">
+                      <span className="text-green-300">🔄</span>
+                      <span className="text-slate-200 text-sm">Economia circular em expansão</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-green-500/10 p-3 rounded-lg border border-green-400/20">
+                      <span className="text-green-300">🚀</span>
+                      <span className="text-slate-200 text-sm">Startups brasileiras especializadas</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
+
+
 
         {/* Processo de Reciclagem Atual */}
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 mb-16">
@@ -394,8 +485,14 @@ const CollectionPoints: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25">
-            Descubra Curiosidades →
+          <button 
+            onClick={() => {
+              const el = document.getElementById("mercado-futuro");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+          >
+            Explore o Mercado →
           </button>
         </div>
       </div>

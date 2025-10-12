@@ -22,12 +22,12 @@ const Footer: React.FC = () => {
     'Pedro Polla da Costa'
   ];
 
-  // Dados interessantes do projeto
+  // Dados interessantes do projeto focado em logística reversa
   const projectHighlights = [
-    { icon: '🔋', label: 'Baterias Analisadas', value: '1M+' },
-    { icon: '♻️', label: 'Taxa de Reciclagem', value: '95%' },
-    { icon: '🌍', label: 'Impacto Ambiental', value: 'Positivo' },
-    { icon: '⚡', label: 'Eficiência Energética', value: '+80%' }
+    { icon: '🇧🇷', label: 'Taxa Reciclagem BR', value: '99%' },
+    { icon: '⚗️', label: 'Eficiência Hidrometalurgia', value: '95%' },
+    { icon: '�', label: 'Segunda Vida', value: '10 anos' },
+    { icon: '💰', label: 'Mercado Global 2035', value: '$4.2B' }
   ];
 
   return (
@@ -47,8 +47,8 @@ const Footer: React.FC = () => {
             </div>
             
             <p className="text-slate-300 leading-relaxed">
-              Revolucionando a reciclagem de baterias de veículos elétricos através da padronização, 
-              criando um futuro mais sustentável para a mobilidade.
+              Explorando a logística reversa de baterias no Brasil: da regulamentação CONAMA 401/2008 
+              aos desafios dos veículos elétricos e a Hierarquia de Valor.
             </p>
           </div>
 
