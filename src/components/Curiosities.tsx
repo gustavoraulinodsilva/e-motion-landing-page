@@ -133,7 +133,7 @@ const Curiosities: React.FC = () => {
   };
 
   return (
-    <section id="curiosidades" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
+    <section id="curiosidades" className="relative w-full min-h-screen bg-linear-to-br from-slate-900 to-blue-900 py-20">
       {/* Header da seção */}
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
@@ -162,7 +162,7 @@ const Curiosities: React.FC = () => {
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
                   <div 
-                    className="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full transition-all duration-500"
+                    className="bg-linear-to-r from-cyan-400 to-blue-400 h-2 rounded-full transition-all duration-500"
                     style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
                   ></div>
                 </div>
@@ -234,7 +234,7 @@ const Curiosities: React.FC = () => {
                 </p>
                 <button
                   onClick={resetQuiz}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-full font-medium hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
+                  className="bg-linear-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-full font-medium hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
                 >
                   🔄 Fazer Quiz Novamente
                 </button>
@@ -368,7 +368,7 @@ const Curiosities: React.FC = () => {
 
             {/* Resultados */}
             <div className="space-y-4">
-              <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl p-4 border border-blue-400/20">
+              <div className="bg-linear-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl p-4 border border-blue-400/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">⏱️</span>
@@ -380,7 +380,7 @@ const Curiosities: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-2xl p-4 border border-green-400/20">
+              <div className="bg-linear-to-r from-green-500/10 to-teal-500/10 rounded-2xl p-4 border border-green-400/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🔋</span>
@@ -392,7 +392,7 @@ const Curiosities: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl p-4 border border-purple-400/20">
+              <div className="bg-linear-to-r from-purple-500/10 to-pink-500/10 rounded-2xl p-4 border border-purple-400/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🏠</span>
@@ -404,7 +404,7 @@ const Curiosities: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-2xl p-4 border border-yellow-400/20">
+              <div className="bg-linear-to-r from-yellow-500/10 to-orange-500/10 rounded-2xl p-4 border border-yellow-400/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">💰</span>
@@ -416,7 +416,7 @@ const Curiosities: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-green-600/10 to-blue-600/10 rounded-2xl p-4 border border-green-500/20">
+              <div className="bg-linear-to-r from-green-600/10 to-blue-600/10 rounded-2xl p-4 border border-green-500/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🌱</span>
@@ -431,7 +431,7 @@ const Curiosities: React.FC = () => {
           </div>
 
           {/* Explicação da Hierarquia */}
-          <div className="mt-12 bg-gradient-to-r from-slate-800/50 to-blue-800/50 rounded-2xl p-6 border border-slate-600/30">
+          <div className="mt-12 bg-linear-to-r from-slate-800/50 to-blue-800/50 rounded-2xl p-6 border border-slate-600/30">
             <h4 className="text-lg font-semibold text-white text-center mb-4">
               🔄 Hierarquia de Valor em Ação
             </h4>
@@ -459,7 +459,7 @@ const Curiosities: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30">
+          <div className="mt-8 text-center bg-linear-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30">
             <div className="text-white font-semibold text-lg mb-2">
               🔄 Economia Circular em Ação
             </div>
@@ -470,12 +470,12 @@ const Curiosities: React.FC = () => {
             
             <button
               onClick={() => {
-                const el = document.getElementById("mercado-futuro");
+                const el = document.getElementById("solucao");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+              className="bg-linear-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
             >
-              Explore o Futuro da Mobilidade →
+              Descubra a Solução →
             </button>
           </div>
         </div>

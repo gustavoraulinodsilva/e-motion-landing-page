@@ -41,7 +41,7 @@ const MarketFuture: React.FC = () => {
   const currentChallenges = data.currentChallenges;
 
   return (
-    <section id="mercado-futuro" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">
+  <section id="mercado-futuro" className="relative w-full min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">
       {/* Header da seção */}
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
@@ -68,7 +68,7 @@ const MarketFuture: React.FC = () => {
                   onClick={() => setActiveTab(tab.id as 'brasil' | 'global' | 'futuro')}
                   className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                      ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                       : 'text-slate-200 hover:bg-white/10'
                   }`}
                 >
@@ -97,7 +97,7 @@ const MarketFuture: React.FC = () => {
                       data.trend === 'down' ? 'bg-red-400' : 'bg-yellow-400'
                     }`}></div>
                   </div>
-                  <div className={`text-3xl font-bold bg-gradient-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
+                  <div className={`text-3xl font-bold bg-linear-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
                     {data.value}
                   </div>
                   <h4 className="text-white font-semibold mb-2">{data.title}</h4>
@@ -114,7 +114,7 @@ const MarketFuture: React.FC = () => {
               
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
+                  <div className="w-20 h-20 bg-linear-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
                     🇨🇳
                   </div>
                   <h4 className="text-xl font-bold text-white mb-2">BYD</h4>
@@ -125,7 +125,7 @@ const MarketFuture: React.FC = () => {
                 </div>
 
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
+                  <div className="w-20 h-20 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
                     🇸🇪
                   </div>
                   <h4 className="text-xl font-bold text-white mb-2">Volvo</h4>
@@ -136,7 +136,7 @@ const MarketFuture: React.FC = () => {
                 </div>
 
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
+                  <div className="w-20 h-20 bg-linear-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
                     💰
                   </div>
                   <h4 className="text-xl font-bold text-white mb-2">Custo-Benefício</h4>
@@ -149,7 +149,7 @@ const MarketFuture: React.FC = () => {
             </div>
 
             {/* Longevidade das baterias */}
-            <div className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 mb-8">
+            <div className="bg-linear-to-r from-purple-900/30 to-blue-900/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30 mb-8">
               <h3 className="text-2xl font-semibold text-white text-center mb-8">
                 🔋 Longevidade das Baterias
               </h3>
@@ -177,7 +177,7 @@ const MarketFuture: React.FC = () => {
             </div>
 
             {/* Vantagens da manutenção elétrica */}
-            <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 backdrop-blur-sm rounded-2xl p-8 border border-green-500/30">
+            <div className="bg-linear-to-r from-green-900/30 to-teal-900/30 backdrop-blur-sm rounded-2xl p-8 border border-green-500/30">
               <h3 className="text-2xl font-semibold text-white text-center mb-8">
                 🔧 Durabilidade Superior aos Convencionais
               </h3>
@@ -254,7 +254,7 @@ const MarketFuture: React.FC = () => {
                       data.trend === 'down' ? 'bg-red-400' : 'bg-yellow-400'
                     }`}></div>
                   </div>
-                  <div className={`text-3xl font-bold bg-gradient-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
+                  <div className={`text-3xl font-bold bg-linear-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
                     {data.value}
                   </div>
                   <h4 className="text-white font-semibold mb-2">{data.title}</h4>
@@ -297,7 +297,7 @@ const MarketFuture: React.FC = () => {
                 </div>
                 
                 <div className="text-center">
-                  <div className="bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl p-8 border border-red-400/30">
+                  <div className="bg-linear-to-r from-red-500 to-yellow-500 rounded-2xl p-8 border border-red-400/30">
                     <div className="text-6xl font-bold text-white mb-4">9M</div>
                     <div className="text-xl font-semibold text-white mb-2">Veículos Vendidos</div>
                     <div className="text-red-100">China em 2024</div>
@@ -307,7 +307,7 @@ const MarketFuture: React.FC = () => {
             </div>
 
             {/* Noruega como exemplo */}
-            <div className="bg-gradient-to-r from-blue-900/30 to-green-900/30 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
+            <div className="bg-linear-to-r from-blue-900/30 to-green-900/30 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
               <h3 className="text-2xl font-semibold text-white text-center mb-8">
                 🇳🇴 Noruega: Pioneira na Transição
               </h3>
@@ -337,7 +337,7 @@ const MarketFuture: React.FC = () => {
                   className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center text-2xl shadow-lg">
+                    <div className="w-16 h-16 bg-linear-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center text-2xl shadow-lg">
                       {perspective.icon}
                     </div>
                     <div>
@@ -366,7 +366,7 @@ const MarketFuture: React.FC = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 {currentChallenges.map((challenge) => (
                   <div key={challenge.id} className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
+                    <div className="w-20 h-20 bg-linear-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
                       {challenge.icon}
                     </div>
                     <h4 className="text-xl font-bold text-white mb-3">{challenge.title}</h4>
@@ -380,7 +380,7 @@ const MarketFuture: React.FC = () => {
             </div>
 
             {/* Impacto da inovação */}
-            <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
+            <div className="bg-linear-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
               <h3 className="text-2xl font-semibold text-white text-center mb-8">
                 🚀 O Impacto da Inovação na Indústria
               </h3>
@@ -410,7 +410,7 @@ const MarketFuture: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/30">
+          <div className="bg-linear-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/30">
             <h3 className="text-2xl font-bold text-white mb-4">
               O Futuro é Elétrico e Sustentável
             </h3>
@@ -420,12 +420,12 @@ const MarketFuture: React.FC = () => {
             </p>
             <button 
               onClick={() => {
-                const el = document.getElementById("curiosidades");
+                const el = document.getElementById("solucao");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+              className="bg-linear-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
             >
-              Explore as Curiosidades →
+              Descubra a Solução →
             </button>
           </div>
         </div>

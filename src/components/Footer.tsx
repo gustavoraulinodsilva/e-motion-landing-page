@@ -31,17 +31,17 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+  <footer className="bg-linear-to-b from-slate-900 to-slate-950 text-white">
       {/* Seção principal do footer */}
       <div className="container mx-auto px-8 py-16">
         <div className="grid md:grid-cols-4 gap-12 items-start">
           {/* Logo e descrição */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-linear-to-r from-cyan-400 to-blue-400 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">⚡</span>
               </div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 E-Motion
               </h3>
             </div>
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
             <div className="mt-6 text-center">
               <button
                 onClick={scrollToTop}
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2 text-sm"
+                className="bg-linear-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2 text-sm"
               >
                 <span>⬆️</span>
                 Voltar ao Topo

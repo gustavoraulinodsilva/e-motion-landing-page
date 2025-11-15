@@ -38,7 +38,7 @@ const CollectionPoints: React.FC = () => {
 
 
   return (
-    <section id="coleta" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
+  <section id="coleta" className="relative w-full min-h-screen bg-linear-to-br from-slate-900 to-blue-900 py-20">
       {/* Header da seção */}
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
@@ -85,10 +85,8 @@ const CollectionPoints: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Conteúdo baseado na aba ativa */}
-        {activeTab === 'Convencionais' && (
+    </div>
+    {activeTab === 'Convencionais' && (
           <div>
             {/* Processo Regulamentado (CONAMA 401/2008) */}
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 mb-16">
@@ -132,7 +130,7 @@ const CollectionPoints: React.FC = () => {
               </div>
 
               {/* Eficiência da Reciclagem */}
-              <div className="bg-gradient-to-r from-green-500/20 to-orange-500/20 rounded-2xl p-6 border border-green-400/30">
+              <div className="bg-linear-to-r from-green-500/20 to-orange-500/20 rounded-2xl p-6 border border-green-400/30">
                 <div className="grid md:grid-cols-3 gap-6 text-center">
                   <div>
                     <div className="text-3xl font-bold text-green-400 mb-2">99%</div>
@@ -169,14 +167,14 @@ const CollectionPoints: React.FC = () => {
                   <div key={step.id} className="relative">
                     <div className="bg-white/5 rounded-2xl p-6 border border-white/20 h-full flex flex-col">
                       <div className="text-center mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-2xl shadow-lg mx-auto mb-3">
+                        <div className="w-16 h-16 bg-linear-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-2xl shadow-lg mx-auto mb-3">
                           {step.icon}
                         </div>
                         <div className="text-green-300 font-bold text-sm mb-1">NÍVEL {step.id}</div>
                         <h4 className="text-white font-semibold text-lg">{step.title}</h4>
                       </div>
                       
-                      <div className="flex-grow">
+                      <div className="grow">
                         <p className="text-slate-200 text-sm leading-relaxed mb-4">{step.description}</p>
                       </div>
                       
@@ -230,7 +228,7 @@ const CollectionPoints: React.FC = () => {
             </div>
 
             {/* Desafios no Brasil */}
-            <div className="bg-gradient-to-r from-yellow-900/30 to-red-900/30 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/30 mb-16">
+            <div className="bg-linear-to-r from-yellow-900/30 to-red-900/30 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/30 mb-16">
               <h3 className="text-2xl font-semibold text-white text-center mb-8">
                 ⚠️ Desafios Atuais no Brasil
               </h3>
@@ -300,7 +298,7 @@ const CollectionPoints: React.FC = () => {
                 <div className="bg-white/5 rounded-2xl p-6 border border-white/20 hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
                   {/* Ícone da etapa */}
                   <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full flex items-center justify-center text-2xl shadow-lg">
+                    <div className="w-16 h-16 bg-linear-to-r from-cyan-400 to-blue-400 rounded-full flex items-center justify-center text-2xl shadow-lg">
                       {step.icon}
                     </div>
                   </div>
@@ -316,7 +314,7 @@ const CollectionPoints: React.FC = () => {
                   </div>
                   
                   {/* Descrição */}
-                  <p className="text-slate-200 text-sm text-center leading-relaxed flex-grow">{step.description}</p>
+                  <p className="text-slate-200 text-sm text-center leading-relaxed grow">{step.description}</p>
                 </div>
                 
                 {/* Seta para próxima etapa (apenas no desktop e se não for o último) */}
@@ -332,7 +330,7 @@ const CollectionPoints: React.FC = () => {
           </div>
           
           {/* Resumo do processo */}
-          <div className="mt-12 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl p-6 border border-cyan-400/20">
+          <div className="mt-12 bg-linear-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl p-6 border border-cyan-400/20">
             <div className="text-center">
               <h4 className="text-xl font-semibold text-white mb-6">⏱️ Resumo do Processo Atual</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -358,7 +356,7 @@ const CollectionPoints: React.FC = () => {
         </div>
 
         {/* Benefícios da Padronização na Logística */}
-        <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-2xl p-8 border border-green-400/30 mb-16">
+  <div className="bg-linear-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-2xl p-8 border border-green-400/30 mb-16">
           <h3 className="text-2xl font-semibold text-white text-center mb-8">
             Como a Padronização Facilitaria a Logística Reversa
           </h3>
@@ -414,12 +412,12 @@ const CollectionPoints: React.FC = () => {
         <div className="text-center">
           <button 
             onClick={() => {
-              const el = document.getElementById("mercado-futuro");
+              const el = document.getElementById("solucao");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+            className="bg-linear-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
           >
-            Explore o Mercado →
+            Descubra a Solução →
           </button>
         </div>
       </div>

@@ -3,114 +3,24 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import heroData from "../data/hero.json";
 
-// Dados das imagens com contexto histórico
-const carouselData = [
-  {
-    src: "/images/arkadiusz-serafinski-benz-patent-motorwagen-01.jpg",
-    alt: "Benz Patent-Motorwagen - O primeiro automóvel (1885)",
-    era: "Pioneiros",
-    year: "1885",
-    title: "O Nascimento",
-    subtitle: "Benz Patent-Motorwagen"
-  },
-  {
-    src: "/images/wp6247892-ford-model-t-wallpapers.jpg",
-    alt: "Ford Model T - Revolução da produção em massa",
-    era: "Industrial",
-    year: "1908",
-    title: "Revolução Industrial",
-    subtitle: "Ford Model T"
-  },
-  {
-    src: "/images/fordmodelt.jpg",
-    alt: "Ford Model T - Democratização do automóvel",
-    era: "Industrial",
-    year: "1920s",
-    title: "Para Todos",
-    subtitle: "Linha de Produção"
-  },
-  {
-    src: "/images/wp1845368-volkswagen-beetle-wallpapers.jpg",
-    alt: "Volkswagen Beetle - Ícone mundial",
-    era: "Clássica",
-    year: "1938",
-    title: "Ícone Mundial",
-    subtitle: "Volkswagen Beetle"
-  },
-  {
-    src: "/images/wp1845361-volkswagen-beetle-wallpapers.jpg",
-    alt: "Volkswagen Beetle - Design atemporal",
-    era: "Clássica",
-    year: "1960s",
-    title: "Design Atemporal",
-    subtitle: "Beetle Evolution"
-  },
-  {
-    src: "/images/wp3543077-muscle-cars-4k-wallpapers.jpg",
-    alt: "Muscle Cars - Era da performance",
-    era: "Performance",
-    year: "1970s",
-    title: "Era da Potência",
-    subtitle: "Muscle Cars"
-  },
-  {
-    src: "/images/wp3543155-muscle-cars-4k-wallpapers.jpg",
-    alt: "Muscle Cars - Cultura americana",
-    era: "Performance",
-    year: "1970s",
-    title: "Cultura Americana",
-    subtitle: "Drag Racing"
-  },
-  {
-    src: "/images/toyota_prius_1997_pictures_2_b.jpg",
-    alt: "Toyota Prius - Primeira revolução híbrida",
-    era: "Híbrida",
-    year: "1997",
-    title: "Revolução Verde",
-    subtitle: "Toyota Prius"
-  },
-  {
-    src: "/images/toyota_prius_1997_wallpapers_1.jpg",
-    alt: "Toyota Prius - Eficiência energética",
-    era: "Híbrida",
-    year: "2000s",
-    title: "Eficiência",
-    subtitle: "Tecnologia Híbrida"
-  },
-  {
-    src: "/images/2010-tesla-roadster-sport-instrumented-test-car-and-driver-photo-318207-s-original.jpg",
-    alt: "Tesla Roadster - Revolução elétrica",
-    era: "Elétrica",
-    year: "2010",
-    title: "Futuro Elétrico",
-    subtitle: "Tesla Roadster"
-  },
-  {
-    src: "/images/2008-tesla-roadster-photo-160790-s-original.jpg",
-    alt: "Tesla Roadster - Performance elétrica",
-    era: "Elétrica",
-    year: "2008",
-    title: "Performance Verde",
-    subtitle: "0-100 em 3.9s"
-  },
-  {
-    src: "/images/bydwallpaper.jpg",
-    alt: "BYD - Líder mundial em EVs",
-    era: "Sustentável",
-    year: "2024",
-    title: "Liderança Global",
-    subtitle: "BYD Electric"
-  },
-  {
-    src: "/images/bydwallpaperdois.jpg",
-    alt: "BYD - Logística reversa e sustentabilidade",
-    era: "Sustentável",
-    year: "Presente",
-    title: "Logística Reversa",
-    subtitle: "Economia Circular"
-  }
-];
+interface HeroImage {
+  src: string;
+  alt: string;
+}
+
+const hero = heroData as unknown as { title?: string; subtitle?: string; images: HeroImage[] };
+
+// Use imagens do JSON (fallback para array vazio se não existir)
+const carouselData = (hero.images || []).map((img, idx) => ({
+  src: img.src,
+  alt: img.alt,
+  era: 'Histórico',
+  year: '',
+  title: hero.title || `Slide ${idx + 1}`,
+  subtitle: hero.subtitle || ''
+}));
 
 export default function HeroCarousel() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -263,7 +173,7 @@ export default function HeroCarousel() {
               sizes="100vw"
             />
             {/* Overlay with gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/60" />
+            <div className="absolute inset-0 bg-linear-to-br from-black/70 via-black/40 to-black/60" />
             
             {/* Era-specific overlay */}
             <div className={`absolute inset-0 ${
@@ -458,7 +368,7 @@ export default function HeroCarousel() {
         {/* Progress bar */}
         <div className="h-1 bg-white/10">
           <div 
-            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out"
+            className="h-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out"
             style={{ 
               width: `${((currentSlide + 1) / carouselData.length) * 100}%`
             }}
@@ -469,7 +379,7 @@ export default function HeroCarousel() {
       {/* Desktop bottom progress bar - Animated */}
       <div className="hidden md:block absolute bottom-0 left-0 w-full h-1 bg-white/10">
         <div 
-          className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-4000 ease-linear"
+          className="h-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-4000 ease-linear"
           style={{ 
             width: isPlaying ? '100%' : `${((currentSlide + 1) / carouselData.length) * 100}%`,
             transition: isPlaying ? 'width 4s linear' : 'width 0.3s ease'

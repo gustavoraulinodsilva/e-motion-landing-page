@@ -47,7 +47,7 @@ const Challenge: React.FC = () => {
   const hierarchy = data.hierarchy;
 
   return (
-    <section id="desafio" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
+    <section id="desafio" className="relative w-full min-h-screen bg-linear-to-br from-slate-900 to-blue-900 py-20">
       {/* Header da seção */}
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
@@ -120,7 +120,7 @@ const Challenge: React.FC = () => {
           </div>
 
           {/* Explicação da Hierarquia de Valor */}
-          <div className="mt-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-blue-500/30">
+          <div className="mt-12 bg-linear-to-r from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-blue-500/30">
             <h4 className="text-xl font-semibold text-white text-center mb-6">
               🔄 Hierarquia de Valor para Baterias de VE
             </h4>
@@ -143,7 +143,7 @@ const Challenge: React.FC = () => {
               const el = document.getElementById("solucao");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+            className="bg-linear-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
           >
             Descubra a Solução →
           </button>

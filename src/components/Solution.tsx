@@ -25,7 +25,7 @@ const Solution: React.FC = () => {
   const solutions: SolutionItem[] = data.solutions;
   const timelineMilestones: TimelineMilestone[] = data.timelineMilestones;
   return (
-    <section id="solucao" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
+    <section id="solucao" className="relative w-full min-h-screen bg-linear-to-br from-slate-900 to-blue-900 py-20">
       {/* Header da seção */}
       <div className="container mx-auto px-8 mb-16">
         <div className="text-center mb-12">
@@ -69,7 +69,7 @@ const Solution: React.FC = () => {
           
           <div className="relative">
             {/* Linha da timeline */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-linear-to-b from-blue-400 to-cyan-400 rounded-full"></div>
             
             {/* Marcos da timeline */}
             <div className="space-y-12">
@@ -92,7 +92,7 @@ const Solution: React.FC = () => {
                   
                   {/* Ponto central */}
                   <div className="relative z-10">
-                    <div className="w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full border-4 border-slate-900 shadow-lg"></div>
+                    <div className="w-6 h-6 bg-linear-to-r from-blue-400 to-cyan-400 rounded-full border-4 border-slate-900 shadow-lg"></div>
                   </div>
                   
                   {/* Espaço vazio do outro lado */}
@@ -104,7 +104,7 @@ const Solution: React.FC = () => {
         </div>
 
         {/* Exemplo NIO China */}
-        <div className="mt-20 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/30">
+  <div className="mt-20 bg-linear-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/30">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-semibold text-white mb-4">
@@ -141,7 +141,7 @@ const Solution: React.FC = () => {
         </div>
 
         {/* Processos de Reciclagem */}
-        <div className="mt-20 bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30">
+  <div className="mt-20 bg-linear-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30">
           <h3 className="text-2xl font-semibold text-white text-center mb-8">
             🔬 Tecnologias de Reciclagem
           </h3>
@@ -247,7 +247,7 @@ const Solution: React.FC = () => {
               const el = document.getElementById("coleta");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+            className="bg-linear-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
           >
             Explore a Logística Reversa →
           </button>
