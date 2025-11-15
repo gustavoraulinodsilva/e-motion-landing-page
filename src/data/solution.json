@@ -1,0 +1,15 @@
+{
+  "solutions": [
+    { "id": 1, "title": "Diagnóstico Avançado", "description": "Avaliação completa do 'estado de saúde' dos módulos e células para determinar o melhor destino da bateria.", "icon": "🔎", "benefit": "Decisão inteligente" },
+    { "id": 2, "title": "Remanufatura Eficiente", "description": "Substituição de módulos degradados por componentes novos.", "icon": "🔧", "benefit": "Segunda chance no veículo" },
+    { "id": 3, "title": "Segunda Vida (Second Life)", "description": "Reconfiguração para armazenamento estacionário em sistemas solares e estabilização da rede elétrica.", "icon": "🏠", "benefit": "Extensão da vida útil" },
+    { "id": 4, "title": "Reciclagem Avançada", "description": "Recuperação de materiais valiosos através de hidrometalurgia.", "icon": "♻️", "benefit": "Economia circular completa" }
+  ],
+  "timelineMilestones": [
+    { "year": "2008", "sector": "Baterias Chumbo-Ácido", "standard": "CONAMA 401/2008", "impact": "99% de reciclagem no Brasil" },
+    { "year": "2015", "sector": "Primeiros VE", "standard": "Casos isolados", "impact": "Sem sistema estruturado" },
+    { "year": "2020", "sector": "Conceito Second Life", "standard": "Projetos piloto", "impact": "Extensão da vida útil" },
+    { "year": "2021", "sector": "Legislação VE", "standard": "PL 2327/2021", "impact": "Marco regulatório em tramitação" },
+    { "year": "2025", "sector": "Sistema Estruturado", "standard": "Hierarquia de Valor", "impact": "Economia circular completa" }
+  ]
+}

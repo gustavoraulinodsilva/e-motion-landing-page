@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
   const projectHighlights = [
     { icon: '🇧🇷', label: 'Taxa Reciclagem BR', value: '99%' },
     { icon: '⚗️', label: 'Eficiência Hidrometalurgia', value: '95%' },
-    { icon: '�', label: 'Segunda Vida', value: '10 anos' },
+    { icon: '🔋', label: 'Segunda Vida', value: '10 anos' },
     { icon: '💰', label: 'Mercado Global 2035', value: '$4.2B' }
   ];
 

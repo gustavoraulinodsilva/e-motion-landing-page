@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
 import React from "react";
+import solutionData from "../data/solution.json";
 
-// Interface para definir o tipo das soluções
+// Tipagens mínimas para o JSON
 interface SolutionItem {
   id: number;
   title: string;
@@ -11,7 +12,6 @@ interface SolutionItem {
   benefit: string;
 }
 
-// Interface para os marcos da timeline
 interface TimelineMilestone {
   year: string;
   sector: string;
@@ -19,73 +19,11 @@ interface TimelineMilestone {
   impact: string;
 }
 
+const data = solutionData as unknown as { solutions: SolutionItem[]; timelineMilestones: TimelineMilestone[] };
+
 const Solution: React.FC = () => {
-  // Array tipado com as soluções da logística reversa
-  const solutions: SolutionItem[] = [
-    {
-      id: 1,
-      title: "Diagnóstico Avançado",
-      description: "Avaliação completa do 'estado de saúde' (SOH) dos módulos e células para determinar o melhor destino da bateria após o uso no veículo.",
-      icon: "�",
-      benefit: "Decisão inteligente"
-    },
-    {
-      id: 2,
-      title: "Remanufatura Eficiente",
-      description: "Substituição de módulos degradados por componentes novos, permitindo que a bateria volte a ser usada em veículos com garantia.",
-      icon: "🔧",
-      benefit: "Segunda chance no veículo"
-    },
-    {
-      id: 3,
-      title: "Segunda Vida (Second Life)",
-      description: "Reconfiguração para armazenamento estacionário em sistemas solares, no-breaks e estabilização da rede elétrica por mais 5-10 anos.",
-      icon: "🏠",
-      benefit: "Extensão da vida útil"
-    },
-    {
-      id: 4,
-      title: "Reciclagem Avançada",
-      description: "Recuperação de materiais valiosos através de hidrometalurgia, obtendo lítio, cobalto, níquel e manganês com alta pureza.",
-      icon: "♻️",
-      benefit: "Economia circular completa"
-    }
-  ];
-
-  // Timeline da evolução da logística reversa
-  const timelineMilestones: TimelineMilestone[] = [
-    {
-      year: "2008",
-      sector: "Baterias Chumbo-Ácido",
-      standard: "CONAMA 401/2008",
-      impact: "99% de reciclagem no Brasil"
-    },
-    {
-      year: "2015",
-      sector: "Primeiros VE",
-      standard: "Casos isolados",
-      impact: "Sem sistema estruturado"
-    },
-    {
-      year: "2020",
-      sector: "Conceito Second Life",
-      standard: "Projetos piloto",
-      impact: "Extensão da vida útil"
-    },
-    {
-      year: "2021",
-      sector: "Legislação VE",
-      standard: "PL 2327/2021",
-      impact: "Marco regulatório em tramitação"
-    },
-    {
-      year: "2025",
-      sector: "Sistema Estruturado",
-      standard: "Hierarquia de Valor",
-      impact: "Economia circular completa"
-    }
-  ];
-
+  const solutions: SolutionItem[] = data.solutions;
+  const timelineMilestones: TimelineMilestone[] = data.timelineMilestones;
   return (
     <section id="solucao" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 py-20">
       {/* Header da seção */}

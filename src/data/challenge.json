@@ -1,0 +1,60 @@
+{
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Volume de Baterias Insuficiente",
+      "description": "A frota de carros elétricos ainda é pequena no Brasil, então o volume de baterias chegando ao fim da vida é baixo, atrasando o desenvolvimento de uma indústria de reciclagem em larga escala.",
+      "icon": "🔋",
+      "impact": "Inviabiliza economia de escala"
+    },
+    {
+      "id": 2,
+      "title": "Logística Complexa e Cara",
+      "description": "O transporte dessas baterias é caro e regulamentado como transporte de material perigoso, exigindo equipamentos especiais e certificações específicas.",
+      "icon": "🚚",
+      "impact": "Eleva custos operacionais"
+    },
+    {
+      "id": 3,
+      "title": "Legislação em Desenvolvimento",
+      "description": "A legislação brasileira ainda está amadurecendo para criar regras específicas para a logística reversa de baterias de íon-lítio, diferente das já consolidadas para chumbo-ácido.",
+      "icon": "⚖️",
+      "impact": "Gera incerteza regulatória"
+    },
+    {
+      "id": 4,
+      "title": "Tecnologia de Alto Custo",
+      "description": "A tecnologia para reciclagem hidrometalúrgica (mais eficiente) ainda tem custo elevado, dificultando sua implementação em escala comercial.",
+      "icon": "🔬",
+      "impact": "Compromete viabilidade econômica"
+    }
+  ],
+  "comparison": {
+    "convencionais": {
+      "icon": "🔋",
+      "title": "Convencionais (Chumbo-Ácido)",
+      "highlights": [
+        { "label": "Regulamentação", "value": "CONAMA 401/2008" },
+        { "label": "Taxa de Reciclagem", "value": "99%" },
+        { "label": "Processo", "value": "Direto" },
+        { "label": "Sistema", "value": "Consolidado" }
+      ]
+    },
+    "ve": {
+      "icon": "⚡",
+      "title": "Veículos Elétricos (Íon-Lítio)",
+      "highlights": [
+        { "label": "Regulamentação", "value": "Em desenvolvimento" },
+        { "label": "Processo", "value": "Hierarquia de Valor" },
+        { "label": "Etapas", "value": "4 níveis" },
+        { "label": "Complexidade", "value": "Alta" }
+      ]
+    }
+  },
+  "hierarchy": [
+    { "id": 1, "icon": "🔄", "title": "REUTILIZAÇÃO", "desc": "Outro veículo" },
+    { "id": 2, "icon": "🔧", "title": "REMANUFATURA", "desc": "Reparo/recondicionamento" },
+    { "id": 3, "icon": "🏠", "title": "SEGUNDA VIDA", "desc": "Armazenamento estacionário" },
+    { "id": 4, "icon": "♻️", "title": "RECICLAGEM", "desc": "Recuperação de materiais" }
+  ]
+}

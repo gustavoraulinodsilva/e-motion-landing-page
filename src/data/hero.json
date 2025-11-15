@@ -1,0 +1,11 @@
+{
+  "title": "A evolução dos automóveis",
+  "subtitle": "Da combustão ao elétrico — uma jornada visual",
+  "images": [
+    { "src": "/car-combustion.jpg", "alt": "Carro a combustão - início da jornada" },
+    { "src": "/hybrid.jpg", "alt": "Híbrido - transição" },
+    { "src": "/early-ev.jpg", "alt": "Primeiros elétricos" },
+    { "src": "/modern-ev.jpg", "alt": "Elétrico moderno" }
+  ],
+  "note": "Coloque suas imagens em /public e ajuste os nomes conforme necessário."
+}

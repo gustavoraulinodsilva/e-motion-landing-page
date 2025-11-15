@@ -1,0 +1,15 @@
+{
+  "brand": {
+    "name": "E-motion",
+    "tagline": "Logística Reversa de Baterias",
+    "logoAlt": "E-motion logo"
+  },
+  "nav": [
+    { "id": "inicio", "label": "Início", "icon": "🏠" },
+    { "id": "desafio", "label": "Desafio", "icon": "⚡" },
+    { "id": "solucao", "label": "Solução", "icon": "💡" },
+    { "id": "coleta", "label": "Logística Reversa", "icon": "♻️" },
+    { "id": "mercado-futuro", "label": "Mercado", "icon": "📈" },
+    { "id": "curiosidades", "label": "Curiosidades", "icon": "🧠" }
+  ]
+}

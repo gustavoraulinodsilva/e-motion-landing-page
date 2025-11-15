@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
+import marketData from "../data/marketFuture.json";
 
-// Interface para dados do mercado
-interface MarketData {
+// Tipagens mínimas para dados externos
+interface MarketDataItem {
   id: number;
   title: string;
   value: string;
   description: string;
   icon: string;
-  trend: 'up' | 'down' | 'stable';
-  color: string;
+  trend?: 'up' | 'down' | 'stable';
+  color?: string;
 }
 
-// Interface para perspectivas futuras
 interface FuturePerspective {
   id: number;
   title: string;
@@ -23,8 +23,7 @@ interface FuturePerspective {
   impact: string;
 }
 
-// Interface para desafios
-interface Challenge {
+interface CurrentChallengeItem {
   id: number;
   title: string;
   description: string;
@@ -32,149 +31,14 @@ interface Challenge {
   solution: string;
 }
 
+const data = marketData as unknown as { brazilMarketData: MarketDataItem[]; globalMarketData: MarketDataItem[]; futurePerspectives: FuturePerspective[]; currentChallenges: CurrentChallengeItem[] };
+
 const MarketFuture: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'brasil' | 'global' | 'futuro'>('brasil');
-
-  // Dados do mercado brasileiro
-  const brazilMarketData: MarketData[] = [
-    {
-      id: 1,
-      title: "Vendas 2024",
-      value: "177 mil",
-      description: "Veículos eletrificados vendidos no Brasil",
-      icon: "🇧🇷",
-      trend: 'up',
-      color: 'from-green-500 to-blue-500'
-    },
-    {
-      id: 2,
-      title: "1º Semestre 2025",
-      value: "86 mil",
-      description: "Vendas mantêm tendência forte",
-      icon: "📈",
-      trend: 'up',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 3,
-      title: "Líder de Mercado",
-      value: "BYD",
-      description: "Com modelos Dolphin, Yuan Pro e Seal",
-      icon: "🏆",
-      trend: 'up',
-      color: 'from-yellow-500 to-orange-500'
-    },
-    {
-      id: 4,
-      title: "Segmento Premium",
-      value: "Volvo EX30",
-      description: "Destaque no mercado premium",
-      icon: "⭐",
-      trend: 'stable',
-      color: 'from-purple-500 to-pink-500'
-    }
-  ];
-
-  // Dados do mercado global
-  const globalMarketData: MarketData[] = [
-    {
-      id: 1,
-      title: "China Domina",
-      value: "60%",
-      description: "Das vendas globais em 2024",
-      icon: "🌏",
-      trend: 'up',
-      color: 'from-red-500 to-yellow-500'
-    },
-    {
-      id: 2,
-      title: "Vendas Globais",
-      value: "14 milhões",
-      description: "Veículos elétricos vendidos em 2024",
-      icon: "🌍",
-      trend: 'up',
-      color: 'from-green-500 to-blue-500'
-    },
-    {
-      id: 3,
-      title: "Participação",
-      value: "20%",
-      description: "Do total de carros novos globalmente",
-      icon: "📊",
-      trend: 'up',
-      color: 'from-blue-500 to-purple-500'
-    },
-    {
-      id: 4,
-      title: "China Vendeu",
-      value: "9 milhões",
-      description: "Unidades em 2024",
-      icon: "🚗",
-      trend: 'up',
-      color: 'from-cyan-500 to-teal-500'
-    }
-  ];
-
-  // Perspectivas futuras
-  const futurePerspectives: FuturePerspective[] = [
-    {
-      id: 1,
-      title: "Baterias de Estado Sólido",
-      description: "Revolução na segurança e eficiência energética com carregamento mais rápido e maior durabilidade",
-      icon: "🔋",
-      timeline: "2026-2030",
-      impact: "Transformacional"
-    },
-    {
-      id: 2,
-      title: "Integração com Energias Renováveis",
-      description: "Carregamento através de sistemas solares e eólicos, tornando a mobilidade 100% sustentável",
-      icon: "☀️",
-      timeline: "2025-2027",
-      impact: "Sustentabilidade"
-    },
-    {
-      id: 3,
-      title: "Descentralização do Carregamento",
-      description: "Estações de carga acessíveis e sistemas de compartilhamento de energia entre veículos",
-      icon: "🔌",
-      timeline: "2024-2026",
-      impact: "Acessibilidade"
-    },
-    {
-      id: 4,
-      title: "Mercado Second Life",
-      description: "US$ 4,2 bilhões em baterias reutilizadas, criando economia circular robusta",
-      icon: "♻️",
-      timeline: "2025-2035",
-      impact: "Economia Circular"
-    }
-  ];
-
-  // Desafios atuais
-  const currentChallenges: Challenge[] = [
-    {
-      id: 1,
-      title: "Alto Custo Inicial",
-      description: "Preço de aquisição ainda elevado comparado aos veículos convencionais",
-      icon: "💰",
-      solution: "Redução de custos através de escala e novas tecnologias"
-    },
-    {
-      id: 2,
-      title: "Infraestrutura de Recarga",
-      description: "Rede de carregamento insuficiente para suportar crescimento acelerado",
-      icon: "🏗️",
-      solution: "Investimento público-privado em estações de carga"
-    },
-    {
-      id: 3,
-      title: "Autonomia e Desempenho",
-      description: "Expectativas dos consumidores por maior alcance e performance",
-      icon: "⚡",
-      solution: "Desenvolvimento de baterias mais eficientes"
-    }
-  ];
+  const brazilMarketData = data.brazilMarketData;
+  const globalMarketData = data.globalMarketData;
+  const futurePerspectives = data.futurePerspectives;
+  const currentChallenges = data.currentChallenges;
 
   return (
     <section id="mercado-futuro" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">

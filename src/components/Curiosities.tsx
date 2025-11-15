@@ -1,6 +1,21 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
+import curiositiesData from "../data/curiosities.json";
+
+// Tipagem para o JSON de curiosidades
+interface CuriositiesData {
+  calculatorDefaults: {
+    batteryCapacity: number;
+    batteryAge: number;
+    secondLifeYears: number;
+    recyclingEfficiency: number;
+  };
+  quizQuestions: QuizQuestion[];
+  curiosities: Curiosity[];
+}
+
+const data = curiositiesData as unknown as CuriositiesData;
 
 // Interface para definir o tipo das perguntas do quiz
 interface QuizQuestion {
@@ -28,108 +43,16 @@ const Curiosities: React.FC = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
-  const [calculatorValues, setCalculatorValues] = useState({
-    batteryCapacity: 75,
-    batteryAge: 8,
-    secondLifeYears: 7,
-    recyclingEfficiency: 90
-  });
+  const [calculatorValues, setCalculatorValues] = useState(() => ({
+    batteryCapacity: data.calculatorDefaults.batteryCapacity,
+    batteryAge: data.calculatorDefaults.batteryAge,
+    secondLifeYears: data.calculatorDefaults.secondLifeYears,
+    recyclingEfficiency: data.calculatorDefaults.recyclingEfficiency
+  }));
 
-  // Perguntas do Quiz sobre Logística Reversa
-  const quizQuestions: QuizQuestion[] = [
-    {
-      id: 1,
-      question: "Qual a taxa de reciclagem das baterias de chumbo-ácido no Brasil?",
-      options: ["75%", "85%", "95%", "99%"],
-      correctAnswer: 3,
-      explanation: "O Brasil possui uma das melhores taxas de reciclagem do mundo para baterias convencionais, chegando a 99%!",
-      funFact: "🇧🇷 Isso posiciona o Brasil como referência mundial em logística reversa de baterias!"
-    },
-    {
-      id: 2,
-      question: "Quantos níveis tem a Hierarquia de Valor para baterias de VE?",
-      options: ["2", "3", "4", "5"],
-      correctAnswer: 2,
-      explanation: "São 4 níveis: Reutilização, Remanufatura, Segunda Vida e Reciclagem!",
-      funFact: "🔄 Este processo pode estender a vida útil total de uma bateria por até 15-20 anos!"
-    },
-    {
-      id: 3,
-      question: "Qual regulamentação estabelece a logística reversa para baterias convencionais?",
-      options: ["Lei 12.305/2010", "CONAMA 401/2008", "NBR 10004", "Resolução ANEEL"],
-      correctAnswer: 1,
-      explanation: "A Resolução CONAMA 401/2008 é o marco regulatório que obriga a logística reversa de baterias!",
-      funFact: "⚖️ Esta resolução criou o sistema de responsabilidade compartilhada ainda usado hoje!"
-    },
-    {
-      id: 4,
-      question: "Qual processo de reciclagem é mais eficiente para baterias de íon-lítio?",
-      options: ["Pirometalurgia", "Hidrometalurgia", "Reciclagem mecânica", "Compostagem"],
-      correctAnswer: 1,
-      explanation: "A hidrometalurgia pode recuperar 90-95% dos materiais com alta pureza!",
-      funFact: "⚗️ Este processo recupera lítio, cobalto, níquel e manganês da 'massa negra'!"
-    },
-    {
-      id: 5,
-      question: "Por quantos anos uma bateria pode ter Segunda Vida em aplicações estacionárias?",
-      options: ["2-3 anos", "5-10 anos", "15-20 anos", "Indefinidamente"],
-      correctAnswer: 1,
-      explanation: "Uma bateria pode ter Segunda Vida por 5-10 anos em sistemas de armazenamento de energia!",
-      funFact: "🏠 Isso pode dobrar a vida útil total da bateria, maximizando seu valor!"
-    }
-  ];
-
-  // Curiosidades sobre Logística Reversa
-  const curiosities: Curiosity[] = [
-    {
-      id: 1,
-      title: "Brasil: Referência Mundial em Reciclagem",
-      description: "O Brasil possui uma das melhores taxas de reciclagem de baterias convencionais do mundo, chegando a 99% com o sistema CONAMA 401/2008.",
-      icon: "🇧🇷",
-      category: "Sustentabilidade",
-      value: "99%"
-    },
-    {
-      id: 2,
-      title: "Mercado Second Life de US$ 4,2 Bi",
-      description: "O mercado global de Segunda Vida para baterias de VE pode alcançar US$ 4,2 bilhões até 2035, criando nova economia circular.",
-      icon: "💰",
-      category: "Economia",
-      value: "$4.2B"
-    },
-    {
-      id: 3,
-      title: "Hierarquia de 4 Níveis",
-      description: "As baterias de VE seguem uma hierarquia de valor: Reutilização → Remanufatura → Segunda Vida → Reciclagem, maximizando aproveitamento.",
-      icon: "�",
-      category: "Inovação",
-      value: "4 níveis"
-    },
-    {
-      id: 4,
-      title: "Hidrometalurgia: 90-95% de Eficiência",
-      description: "O processo hidrometalúrgico recupera lítio, cobalto, níquel e manganês com 90-95% de eficiência da 'massa negra'.",
-      icon: "⚗️",
-      category: "Tecnologia",
-      value: "95%"
-    },
-    {
-      id: 5,
-      title: "PL 2327/2021 em Tramitação",
-      description: "O Projeto de Lei 2327/2021 busca criar marco regulatório específico para logística reversa de baterias de veículos elétricos no Brasil.",
-      icon: "⚖️",
-      category: "Inovação",
-      value: "2021"
-    },
-    {
-      id: 6,
-      title: "Segunda Vida: +5-10 Anos",
-      description: "Baterias de VE podem ter Segunda Vida por 5-10 anos em sistemas de armazenamento de energia solar e estabilização de rede.",
-      icon: "🏠",
-      category: "Sustentabilidade",
-      value: "10 anos"
-    }
-  ];
+  // Carrega perguntas e curiosidades a partir do JSON externo
+  const quizQuestions: QuizQuestion[] = data.quizQuestions;
+  const curiosities: Curiosity[] = data.curiosities;
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -176,31 +99,35 @@ const Curiosities: React.FC = () => {
     return { emoji: "🌱", title: "Iniciante!", message: "Há muito para descobrir sobre baterias padronizadas!" };
   };
 
-  // Calculadora de Economia Circular
+  // Calculadora de Economia Circular (estimativas simplificadas)
   const calculateCircularEconomy = () => {
     const { batteryCapacity, batteryAge, secondLifeYears, recyclingEfficiency } = calculatorValues;
-    
-    // Capacidade remanescente após primeira vida (geralmente 70-80%)
-    const remainingCapacity = batteryCapacity * 0.75;
-    
-    // Energia total na segunda vida (anos * capacidade * ciclos por ano)
-    const secondLifeEnergy = remainingCapacity * secondLifeYears * 300; // 300 ciclos/ano
-    
-    // Valor dos materiais recuperados (estimativa em R$)
-    const materialValue = batteryCapacity * 150 * (recyclingEfficiency / 100); // R$ 150/kWh
-    
-    // Casas que podem ser alimentadas na segunda vida
-    const housesSecondLife = Math.floor(remainingCapacity / 30); // 30kWh/dia casa média
-    
-    // CO2 evitado (kg) - estimativa
-    const co2Avoided = batteryCapacity * batteryAge * 12 + secondLifeEnergy * 0.5;
-    
+
+    // Capacidade remanescente após a primeira vida (usar coeficiente conservador de 75%)
+    const remainingCapacity = batteryCapacity * 0.75; // kWh
+
+    // Energia total disponível na segunda vida (kWh) = capacidade remanescente * ciclos por ano * anos
+    // Usamos 300 ciclos/ano como aproximação de ciclos úteis por ano (aprox. 0.8 ciclos/dia * 365)
+    const CYCLES_PER_YEAR = 300;
+    const secondLifeEnergy = remainingCapacity * secondLifeYears * CYCLES_PER_YEAR; // kWh
+
+    // Valor estimado dos materiais recuperados (R$) por kWh
+    const materialValue = batteryCapacity * 150 * (recyclingEfficiency / 100); // R$ 150/kWh é uma estimativa
+
+    // Quantas residências poderiam ser alimentadas por 1 ano com a energia da segunda vida
+    // Assumimos consumo médio anual por residência: 30 kWh/dia * 365 = 10.950 kWh/ano (valor conservador usado no site)
+    const AVG_HOUSE_ANNUAL_KWH = 30 * 365;
+    const housesSecondLife = Math.floor(secondLifeEnergy / AVG_HOUSE_ANNUAL_KWH);
+
+    // CO2 evitado (kg) - estimativa muito simplificada: cada kWh distribuído evita ~0.5 kg CO2 (varia por matriz energética)
+    const co2Avoided = Math.round(secondLifeEnergy * 0.5);
+
     return {
       remainingCapacity: Math.round(remainingCapacity),
       secondLifeEnergy: Math.round(secondLifeEnergy),
       materialValue: Math.round(materialValue),
       housesSecondLife,
-      co2Avoided: Math.round(co2Avoided),
+      co2Avoided,
       totalLifetime: batteryAge + secondLifeYears
     };
   };
@@ -534,14 +461,20 @@ const Curiosities: React.FC = () => {
 
           <div className="mt-8 text-center bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30">
             <div className="text-white font-semibold text-lg mb-2">
-              � Economia Circular em Ação
+              🔄 Economia Circular em Ação
             </div>
             <p className="text-slate-200 text-sm mb-6">
               A Hierarquia de Valor maximiza o aproveitamento de cada bateria através de <span className="text-green-300 font-bold">múltiplas vidas úteis</span>, 
               criando um sistema sustentável que pode alcançar <span className="text-blue-300 font-bold">US$ 4,2 bilhões</span> até 2035!
             </p>
             
-            <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25">
+            <button
+              onClick={() => {
+                const el = document.getElementById("mercado-futuro");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+            >
               Explore o Futuro da Mobilidade →
             </button>
           </div>

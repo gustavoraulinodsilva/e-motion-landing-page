@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
+import collectionData from "../data/collectionPoints.json";
 
 // Interface para as etapas da hierarquia de valor
 interface ValueHierarchyStep {
@@ -25,86 +26,12 @@ interface ProcessStep {
 const CollectionPoints: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'Convencionais' | 'VeiculosEletricos'>('Convencionais');
 
+  const data = collectionData as unknown as { valueHierarchy: ValueHierarchyStep[]; recyclingProcess: ProcessStep[] };
 
+  // Carrega hierarquia e processo a partir do JSON
+  const valueHierarchy: ValueHierarchyStep[] = data.valueHierarchy;
 
-  // Hierarquia de Valor para baterias de VE
-  const valueHierarchy: ValueHierarchyStep[] = [
-    {
-      id: 1,
-      title: "Reutilização",
-      description: "Bateria usada em outro veículo após diagnóstico completo",
-      icon: "🔄",
-      duration: "1-2 dias",
-      efficiency: "100%",
-      applicableTo: "Íon-Lítio"
-    },
-    {
-      id: 2,
-      title: "Remanufatura",
-      description: "Reparo da bateria, substituindo módulos ou células defeituosas",
-      icon: "🔧",
-      duration: "1-2 semanas",
-      efficiency: "90-95%",
-      applicableTo: "Íon-Lítio"
-    },
-    {
-      id: 3,
-      title: "Segunda Vida",
-      description: "Uso em armazenamento de energia estacionária (solar, backup)",
-      icon: "🏠",
-      duration: "5-10 anos",
-      efficiency: "70-80%",
-      applicableTo: "Íon-Lítio"
-    },
-    {
-      id: 4,
-      title: "Reciclagem",
-      description: "Recuperação de materiais através de processos químicos",
-      icon: "♻️",
-      duration: "2-4 semanas",
-      efficiency: "60-95%",
-      applicableTo: "Ambos"
-    }
-  ];
-
-  // Processo de reciclagem atual
-  const recyclingProcess: ProcessStep[] = [
-    {
-      id: 1,
-      title: "Coleta",
-      description: "Retirada das baterias nos pontos de coleta ou domicílio",
-      icon: "🚚",
-      duration: "1-2 dias"
-    },
-    {
-      id: 2,
-      title: "Triagem",
-      description: "Classificação por tipo, estado e potencial de reuso",
-      icon: "🔍",
-      duration: "2-3 horas"
-    },
-    {
-      id: 3,
-      title: "Desmontagem",
-      description: "Separação segura dos componentes e materiais",
-      icon: "🔧",
-      duration: "3-4 horas"
-    },
-    {
-      id: 4,
-      title: "Processamento",
-      description: "Recuperação de materiais valiosos (lítio, cobalto, níquel)",
-      icon: "⚗️",
-      duration: "1-2 semanas"
-    },
-    {
-      id: 5,
-      title: "Reaproveitamento",
-      description: "Criação de novas baterias ou sistemas de energia",
-      icon: "♻️",
-      duration: "2-4 semanas"
-    }
-  ];
+  const recyclingProcess: ProcessStep[] = data.recyclingProcess;
 
 
 

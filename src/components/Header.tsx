@@ -6,6 +6,8 @@ function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    // carregar nav a partir do JSON
+    // mantemos import dinâmico caso queira externalizar posteriormente
 
     useEffect(() => {
         const handleScroll = () => {

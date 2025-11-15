@@ -1,0 +1,47 @@
+{
+  "valueHierarchy": [
+    {
+      "id": 1,
+      "title": "Reutilização",
+      "description": "Bateria usada em outro veículo após diagnóstico completo",
+      "icon": "🔄",
+      "duration": "1-2 dias",
+      "efficiency": "100%",
+      "applicableTo": "Íon-Lítio"
+    },
+    {
+      "id": 2,
+      "title": "Remanufatura",
+      "description": "Reparo da bateria, substituindo módulos ou células defeituosas",
+      "icon": "🔧",
+      "duration": "1-2 semanas",
+      "efficiency": "90-95%",
+      "applicableTo": "Íon-Lítio"
+    },
+    {
+      "id": 3,
+      "title": "Segunda Vida",
+      "description": "Uso em armazenamento de energia estacionária (solar, backup)",
+      "icon": "🏠",
+      "duration": "5-10 anos",
+      "efficiency": "70-80%",
+      "applicableTo": "Íon-Lítio"
+    },
+    {
+      "id": 4,
+      "title": "Reciclagem",
+      "description": "Recuperação de materiais através de processos químicos",
+      "icon": "♻️",
+      "duration": "2-4 semanas",
+      "efficiency": "60-95%",
+      "applicableTo": "Ambos"
+    }
+  ],
+  "recyclingProcess": [
+    { "id": 1, "title": "Coleta", "description": "Retirada das baterias nos pontos de coleta ou domicílio", "icon": "🚚", "duration": "1-2 dias" },
+    { "id": 2, "title": "Triagem", "description": "Classificação por tipo, estado e potencial de reuso", "icon": "🔍", "duration": "2-3 horas" },
+    { "id": 3, "title": "Desmontagem", "description": "Separação segura dos componentes e materiais", "icon": "🔧", "duration": "3-4 horas" },
+    { "id": 4, "title": "Processamento", "description": "Recuperação de materiais valiosos (lítio, cobalto, níquel)", "icon": "⚗️", "duration": "1-2 semanas" },
+    { "id": 5, "title": "Reaproveitamento", "description": "Criação de novas baterias ou sistemas de energia", "icon": "♻️", "duration": "2-4 semanas" }
+  ]
+}

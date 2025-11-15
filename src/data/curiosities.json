@@ -1,0 +1,116 @@
+{
+  "calculatorDefaults": {
+    "batteryCapacity": 75,
+    "batteryAge": 8,
+    "secondLifeYears": 7,
+    "recyclingEfficiency": 90
+  },
+  "quizQuestions": [
+    {
+      "id": 1,
+      "question": "Qual a taxa de reciclagem das baterias de chumbo-ácido no Brasil?",
+      "options": ["75%", "85%", "95%", "99%"],
+      "correctAnswer": 3,
+      "explanation": "O Brasil possui uma das melhores taxas de reciclagem do mundo para baterias convencionais, chegando a 99%!",
+      "funFact": "🇧🇷 Isso posiciona o Brasil como referência mundial em logística reversa de baterias!"
+    },
+    {
+      "id": 2,
+      "question": "Quantos níveis tem a Hierarquia de Valor para baterias de VE?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 2,
+      "explanation": "São 4 níveis: Reutilização, Remanufatura, Segunda Vida e Reciclagem!",
+      "funFact": "🔄 Este processo pode estender a vida útil total de uma bateria por até 15-20 anos!"
+    },
+    {
+      "id": 3,
+      "question": "Qual regulamentação estabelece a logística reversa para baterias convencionais?",
+      "options": ["Lei 12.305/2010", "CONAMA 401/2008", "NBR 10004", "Resolução ANEEL"],
+      "correctAnswer": 1,
+      "explanation": "A Resolução CONAMA 401/2008 é o marco regulatório que obriga a logística reversa de baterias!",
+      "funFact": "⚖️ Esta resolução criou o sistema de responsabilidade compartilhada ainda usado hoje!"
+    },
+    {
+      "id": 4,
+      "question": "Qual processo de reciclagem é mais eficiente para baterias de íon-lítio?",
+      "options": ["Pirometalurgia", "Hidrometalurgia", "Reciclagem mecânica", "Compostagem"],
+      "correctAnswer": 1,
+      "explanation": "A hidrometalurgia pode recuperar 90-95% dos materiais com alta pureza!",
+      "funFact": "⚗️ Este processo recupera lítio, cobalto, níquel e manganês da 'massa negra'!"
+    },
+    {
+      "id": 5,
+      "question": "Por quantos anos uma bateria pode ter Segunda Vida em aplicações estacionárias?",
+      "options": ["2-3 anos", "5-10 anos", "15-20 anos", "Indefinidamente"],
+      "correctAnswer": 1,
+      "explanation": "Uma bateria pode ter Segunda Vida por 5-10 anos em sistemas de armazenamento de energia!",
+      "funFact": "🏠 Isso pode dobrar a vida útil total da bateria, maximizando seu valor!"
+    },
+    {
+      "id": 6,
+      "question": "O que significa 'Second Life' no contexto de baterias?",
+      "options": ["Reutilizar a bateria em outro veículo", "Vender a bateria como sucata", "Usar células em aplicações estacionárias", "Compostagem"],
+      "correctAnswer": 2,
+      "explanation": "Second Life refere-se ao uso das baterias em aplicações estacionárias, como armazenamento residencial ou de rede.",
+      "funFact": "🔋 As baterias podem fornecer armazenamento valioso para energia solar e reduzir picos de demanda na rede."
+    },
+    {
+      "id": 7,
+      "question": "Qual é a principal vantagem da padronização de baterias?",
+      "options": ["Facilitar troca rápida", "Aumentar custos", "Reduzir reciclagem", "Diminuir a eficiência"],
+      "correctAnswer": 0,
+      "explanation": "A padronização permite troca rápida, logística mais simples e maior economia de escala.",
+      "funFact": "🔁 Padronizar componentes ajuda a criar mercados secundários robustos e padronizados."
+    }
+  ],
+  "curiosities": [
+    {
+      "id": 1,
+      "title": "Brasil: Referência Mundial em Reciclagem",
+      "description": "O Brasil possui uma das melhores taxas de reciclagem de baterias convencionais do mundo, chegando a 99% com o sistema CONAMA 401/2008.",
+      "icon": "🇧🇷",
+      "category": "Sustentabilidade",
+      "value": "99%"
+    },
+    {
+      "id": 2,
+      "title": "Mercado Second Life de US$ 4,2 Bi",
+      "description": "O mercado global de Segunda Vida para baterias de VE pode alcançar US$ 4,2 bilhões até 2035, criando nova economia circular.",
+      "icon": "💰",
+      "category": "Economia",
+      "value": "$4.2B"
+    },
+    {
+      "id": 3,
+      "title": "Hierarquia de 4 Níveis",
+      "description": "As baterias de VE seguem uma hierarquia de valor: Reutilização → Remanufatura → Segunda Vida → Reciclagem, maximizando aproveitamento.",
+      "icon": "🔁",
+      "category": "Inovação",
+      "value": "4 níveis"
+    },
+    {
+      "id": 4,
+      "title": "Hidrometalurgia: 90-95% de Eficiência",
+      "description": "O processo hidrometalúrgico recupera lítio, cobalto, níquel e manganês com 90-95% de eficiência da 'massa negra'.",
+      "icon": "⚗️",
+      "category": "Tecnologia",
+      "value": "95%"
+    },
+    {
+      "id": 5,
+      "title": "PL 2327/2021 em Tramitação",
+      "description": "O Projeto de Lei 2327/2021 busca criar marco regulatório específico para logística reversa de baterias de veículos elétricos no Brasil.",
+      "icon": "⚖️",
+      "category": "Inovação",
+      "value": "2021"
+    },
+    {
+      "id": 6,
+      "title": "Segunda Vida: +5-10 Anos",
+      "description": "Baterias de VE podem ter Segunda Vida por 5-10 anos em sistemas de armazenamento de energia solar e estabilização de rede.",
+      "icon": "🏠",
+      "category": "Sustentabilidade",
+      "value": "10 anos"
+    }
+  ]
+}
