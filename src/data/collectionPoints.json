@@ -44,4 +44,9 @@
     { "id": 4, "title": "Processamento", "description": "Recuperação de materiais valiosos (lítio, cobalto, níquel)", "icon": "⚗️", "duration": "1-2 semanas" },
     { "id": 5, "title": "Reaproveitamento", "description": "Criação de novas baterias ou sistemas de energia", "icon": "♻️", "duration": "2-4 semanas" }
   ]
+  ,
+  "sources": [
+    { "id": "SINIR", "title": "SINIR - Gestão de Resíduos Sólidos", "link": "https://sinir.gov.br/" },
+    { "id": "LACTEC", "title": "LACTEC - Pesquisas sobre reciclagem", "link": "https://www.lactec.org.br/" }
+  ]
 }

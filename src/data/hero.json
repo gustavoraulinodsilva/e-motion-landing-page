@@ -70,4 +70,10 @@
     }
   ],
   "note": "Coloque suas imagens em /public e ajuste os nomes conforme necessário."
+  ,
+  "sources": [
+    { "id": "CONAMA401", "title": "Resolução CONAMA nº 401/2008", "link": "https://www.gov.br/ibama/pt-br/assuntos/assuntos-ambientais/legislacao/conama/resolucoes/2008/resolucao-401-2008.pdf" },
+    { "id": "SINIR", "title": "SINIR - Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos", "link": "https://sinir.gov.br/" },
+    { "id": "PL2327", "title": "PL 2327/2021 (Senado)", "link": "https://www25.senado.leg.br/web/atividade/materias/-/materia/148285" }
+  ]
 }

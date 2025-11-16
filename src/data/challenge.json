@@ -57,4 +57,10 @@
     { "id": 3, "icon": "🏠", "title": "SEGUNDA VIDA", "desc": "Armazenamento estacionário" },
     { "id": 4, "icon": "♻️", "title": "RECICLAGEM", "desc": "Recuperação de materiais" }
   ]
+  ,
+  "sources": [
+    { "id": "CONAMA401", "title": "Resolução CONAMA nº 401/2008", "link": "https://www.gov.br/ibama/pt-br/assuntos/assuntos-ambientais/legislacao/conama/resolucoes/2008/resolucao-401-2008.pdf" },
+    { "id": "PL2327", "title": "PL 2327/2021", "link": "https://www25.senado.leg.br/web/atividade/materias/-/materia/148285" },
+    { "id": "LACTEC", "title": "LACTEC - Estudos e publicações", "link": "https://www.lactec.org.br/" }
+  ]
 }

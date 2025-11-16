@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "id": "CONAMA401",
+      "title": "Resolução CONAMA nº 401/2008",
+      "description": "Estabelece diretrizes para o gerenciamento ambientalmente adequado de pilhas e baterias, definindo responsabilidades para fabricantes, importadores, distribuidores e comerciantes.",
+      "link": "https://www.gov.br/ibama/pt-br/assuntos/assuntos-ambientais/legislacao/conama/resolucoes/2008/resolucao-401-2008.pdf"
+    },
+    {
+      "id": "SINIR",
+      "title": "Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos (SINIR)",
+      "description": "Portal do Governo Federal com orientações sobre o descarte e pontos de coleta de resíduos, incluindo baterias.",
+      "link": "https://sinir.gov.br/"
+    },
+    {
+      "id": "PL2327",
+      "title": "Projeto de Lei PL 2327/2021",
+      "description": "Projeto de lei que propõe alterações na Política Nacional de Resíduos Sólidos para incluir especificidades sobre baterias de veículos elétricos.",
+      "link": "https://www25.senado.leg.br/web/atividade/materias/-/materia/148285"
+    },
+    {
+      "id": "FAPESP",
+      "title": "Revista Pesquisa FAPESP - Estudos sobre reciclagem de baterias",
+      "description": "Artigos científicos que abordam tecnologias como a hidrometalurgia para recuperação de metais de baterias de íon-lítio.",
+      "link": "https://revistapesquisa.fapesp.br/"
+    },
+    {
+      "id": "LACTEC",
+      "title": "LACTEC - Pesquisas em reciclagem e recuperação de materiais",
+      "description": "Instituto que publica estudos sobre processos de reciclagem e testes tecnológicos relacionados a baterias.",
+      "link": "https://www.lactec.org.br/"
+    },
+    {
+      "id": "INSIDEEV",
+      "title": "InsideEVs e demais portais especializados",
+      "description": "Reportagens e análises sobre 'Second Life' e mercado de baterias elétricas.",
+      "link": "https://insideevs.com/"
+    }
+  ]
+}

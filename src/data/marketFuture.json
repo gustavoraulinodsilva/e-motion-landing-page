@@ -22,4 +22,9 @@
     { "id": 2, "title": "Infraestrutura de Recarga", "description": "Rede de carregamento insuficiente", "icon": "🏗️", "solution": "Investimento público-privado" },
     { "id": 3, "title": "Autonomia e Desempenho", "description": "Expectativas por maior alcance", "icon": "⚡", "solution": "Baterias mais eficientes" }
   ]
+  ,
+  "sources": [
+    { "id": "INSIDEEV", "title": "InsideEVs - Notícias e análises", "link": "https://insideevs.com/" },
+    { "id": "FAPESP", "title": "Pesquisa FAPESP - Estudos em baterias", "link": "https://revistapesquisa.fapesp.br/" }
+  ]
 }

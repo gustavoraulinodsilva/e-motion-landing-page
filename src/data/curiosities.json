@@ -113,4 +113,10 @@
       "value": "10 anos"
     }
   ]
+  ,
+  "sources": [
+    { "id": "CONAMA401", "title": "Resolução CONAMA nº 401/2008", "link": "https://www.gov.br/ibama/pt-br/assuntos/assuntos-ambientais/legislacao/conama/resolucoes/2008/resolucao-401-2008.pdf" },
+    { "id": "PL2327", "title": "PL 2327/2021 (Senado)", "link": "https://www25.senado.leg.br/web/atividade/materias/-/materia/148285" },
+    { "id": "FAPESP", "title": "Pesquisa FAPESP - artigos sobre reciclagem de baterias", "link": "https://revistapesquisa.fapesp.br/" }
+  ]
 }

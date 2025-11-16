@@ -13,6 +13,7 @@ interface CuriositiesData {
   };
   quizQuestions: QuizQuestion[];
   curiosities: Curiosity[];
+  sources?: { id: string; title: string; link: string }[];
 }
 
 const data = curiositiesData as unknown as CuriositiesData;
@@ -53,6 +54,8 @@ const Curiosities: React.FC = () => {
   // Carrega perguntas e curiosidades a partir do JSON externo
   const quizQuestions: QuizQuestion[] = data.quizQuestions;
   const curiosities: Curiosity[] = data.curiosities;
+  // Fontes (se presentes no JSON)
+  const sources = data.sources;
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -478,6 +481,27 @@ const Curiosities: React.FC = () => {
               Descubra a Solução →
             </button>
           </div>
+
+          {/* Fontes / Referências (se houver) */}
+          {sources && sources.length > 0 && (
+            <div className="mt-10 max-w-3xl mx-auto text-left bg-white/5 p-6 rounded-2xl border border-white/10">
+              <h4 className="text-lg font-semibold text-white mb-4">Fontes & Referências</h4>
+              <ul className="list-disc list-inside text-slate-200 text-sm space-y-2">
+                {sources.map((s) => (
+                  <li key={s.id}>
+                    <a
+                      href={s.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan-300 hover:underline"
+                    >
+                      {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </section>

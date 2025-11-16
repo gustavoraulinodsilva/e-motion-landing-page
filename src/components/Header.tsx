@@ -84,7 +84,9 @@ function Header() {
             }`}
         >
             <nav className="flex items-center justify-between px-4 md:px-8 py-3 md:py-5 max-w-7xl mx-auto">
-                <div className="flex items-center space-x-3 group">
+                <a onClick={() => scrollToSection('inicio')}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToSection('inicio'); } }}
+                        aria-label="Ir para o início" className="flex items-center space-x-3 group">
                     <div
                         className={`relative inline-flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-500 shadow-lg group-hover:scale-110 transform ${
                             scrolled 
@@ -96,13 +98,7 @@ function Header() {
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="relative z-10">
                             <rect x="3" y="7" width="16" height="10" rx="3" fill="white" fillOpacity="0.9"/>
                             <rect x="19" y="10" width="2" height="4" rx="1" fill="#fbbf24"/>
-                            <rect x="5" y="9" width="12" height="6" rx="2" fill="url(#batteryGradient)"/>
-                            <defs>
-                                <linearGradient id="batteryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="#10b981"/>
-                                    <stop offset="100%" stopColor="#3b82f6"/>
-                                </linearGradient>
-                            </defs>
+                            <rect x="5" y="9" width="12" height="6" rx="2" fill="#10b981"/>
                         </svg>
                         {/* Efeito de brilho */}
                         <div className="absolute inset-0 rounded-xl bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500"></div>
@@ -110,7 +106,7 @@ function Header() {
                     <h1 className="text-2xl md:text-3xl font-bold bg-linear-to-r from-blue-200 to-green-200 bg-clip-text text-transparent tracking-tight select-none transition-all duration-500 group-hover:scale-105">
                         {data.brand?.name ?? 'E-motion'}
                     </h1>
-                </div>
+                </a>
                 <ul className={`hidden md:flex items-center space-x-6 transition-all duration-700 ${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
                     {data.nav?.map((item) => (
                         <li key={item.id}>
