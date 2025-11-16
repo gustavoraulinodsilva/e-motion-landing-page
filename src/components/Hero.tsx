@@ -7,20 +7,69 @@ import heroData from "../data/hero.json";
 
 interface HeroImage {
   src: string;
-  alt: string;
+  alt?: string;
 }
 
-const hero = heroData as unknown as { title?: string; subtitle?: string; images: HeroImage[] };
+type Era = {
+  id?: number;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  images?: string[] | HeroImage[];
+};
 
-// Use imagens do JSON (fallback para array vazio se não existir)
-const carouselData = (hero.images || []).map((img, idx) => ({
-  src: img.src,
-  alt: img.alt,
-  era: 'Histórico',
-  year: '',
-  title: hero.title || `Slide ${idx + 1}`,
-  subtitle: hero.subtitle || ''
-}));
+// heroData may be either the legacy flat { images: [] } or the structured { eras: [] }
+const heroAny = heroData as unknown as { images?: HeroImage[]; eras?: Era[]; title?: string; subtitle?: string; description?: string };
+
+// Build a flat carouselData array from either format. Each slide includes era metadata.
+const carouselData: Array<{
+  src: string;
+  alt?: string;
+  era?: string;
+  year?: string;
+  title?: string;
+  subtitle?: string;
+}> = [];
+
+if (Array.isArray(heroAny.images)) {
+  // legacy flat format: images is array of {src, alt}
+  (heroAny.images as HeroImage[]).forEach((img: HeroImage, idx: number) => {
+    carouselData.push({
+      src: img.src,
+      alt: img.alt || `Slide ${idx + 1}`,
+      era: heroAny.title || 'Histórico',
+      year: '',
+      title: heroAny.title || `Slide ${idx + 1}`,
+      subtitle: heroAny.subtitle || ''
+    });
+  });
+} else if (Array.isArray(heroAny.eras)) {
+  // era-structured format: eras -> images[]
+  (heroAny.eras as Era[]).forEach((era: Era) => {
+    const imgs = era.images || [];
+    imgs.forEach((img: string | HeroImage, idx: number) => {
+      if (typeof img === 'string') {
+        carouselData.push({
+          src: img,
+          alt: `${era.title || 'Era'} ${idx + 1}`,
+          era: era.title,
+          year: era.subtitle,
+          title: era.title,
+          subtitle: era.description || heroAny.subtitle || ''
+        });
+      } else if (img && typeof img.src === 'string') {
+        carouselData.push({
+          src: img.src,
+          alt: img.alt || `${era.title || 'Era'} ${idx + 1}`,
+          era: era.title,
+          year: era.subtitle,
+          title: era.title,
+          subtitle: era.description || heroAny.subtitle || ''
+        });
+      }
+    });
+  });
+}
 
 export default function HeroCarousel() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -166,7 +215,7 @@ export default function HeroCarousel() {
           >
             <Image
               src={item.src}
-              alt={item.alt}
+              alt={item.alt ?? item.title ?? 'hero slide'}
               fill
               className="object-cover"
               priority={index === 0}
