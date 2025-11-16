@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+    # also trigger on tag pushes (e.g. v1.0.0)
+    tags:
+      - 'v*'
+  # run on PRs targeting main so preview builds happen for contributions
+  pull_request:
+    branches:
+      - main
+  # allow manual runs from Actions tab
+  workflow_dispatch: {}
 
 permissions:
   contents: write
